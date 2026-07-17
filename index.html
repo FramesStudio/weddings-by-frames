@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weddings.by.Frames — Hochzeitsfilme, die euren Tag für immer festhalten</title>
+<meta name="description" content="Exklusive Hochzeitsfilme für Paare, die ihren besonderen Tag nicht nur erinnern, sondern für immer wieder erleben wollen. Jetzt unverbindlich Verfügbarkeit anfragen.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600;700&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+/* Blosta Script — CI-Schrift. Falls die Font-Datei lokal liegt, hier einbinden: */
+@font-face{
+  font-family:'Blosta Script';
+  src:local('Blosta Script'),local('Blosta'),url('BlostaScript.woff2') format('woff2'),url('BlostaScript.ttf') format('truetype');
+  font-display:swap;
+}
+:root{
+  /* Weddings.by.Frames CI */
+  --ivory:#FBF7F3;
+  --cream:#F7EDE8;
+  --charcoal:#241316;
+  --charcoal-soft:#31191D;
+  --gold:#AF0000;              /* CI-Rot — nur als Akzent */
+  --gold-light:#EBC6C2;        /* zartes Blush */
+  --brand-red:#AF0000;
+  --leaf:#4A7031;
+  --text:#40332F;
+  --text-soft:#77625C;
+  --white:#FFFFFF;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Jost',-apple-system,sans-serif;
+  --script:'Blosta Script','Pinyon Script',cursive;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--text);background:var(--ivory);font-weight:300;line-height:1.7;font-size:17px;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--charcoal);line-height:1.15}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.container{max-width:1140px;margin:0 auto;padding:0 24px}
+.eyebrow{font-family:var(--sans);font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);font-weight:500;display:block;margin-bottom:20px}
+section{padding:110px 0}
+@media(max-width:768px){section{padding:72px 0}}
+
+/* ---------- CTA Button ---------- */
+.btn{display:inline-block;background:#AF0000;color:#FFFFFF;font-family:var(--sans);font-size:14px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;padding:20px 44px;border:none;cursor:pointer;transition:all .35s ease;text-align:center}
+.btn:hover{background:#8B0000;color:#FFFFFF;transform:translateY(-2px)}
+.btn-light{background:#FFFFFF;color:#AF0000}
+.btn-light:hover{background:var(--gold-light);color:#AF0000}
+.btn-note{display:block;margin-top:14px;font-size:13.5px;color:var(--text-soft);letter-spacing:.02em}
+.btn-note.on-dark{color:rgba(250,247,242,.55)}
+
+/* ---------- Nav ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:22px 0;transition:all .4s ease}
+nav.scrolled{background:rgba(250,247,242,.96);backdrop-filter:blur(12px);padding:14px 0;box-shadow:0 1px 0 rgba(28,26,23,.06)}
+nav .container{display:flex;justify-content:space-between;align-items:center}
+.logo{display:flex;align-items:center;gap:11px;color:var(--charcoal);transition:color .4s}
+.logo .logo-mark{height:32px;width:auto}
+.logo .logo-w{font-family:var(--script);font-size:31px;font-weight:400;line-height:1}
+.logo .logo-by{font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;opacity:.85}
+.nav-cta{font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;color:var(--charcoal);border:1px solid rgba(36,19,22,.22);padding:11px 24px;transition:all .35s}
+.nav-cta:hover{background:#AF0000;border-color:#AF0000;color:#FFFFFF!important}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;background:
+  radial-gradient(ellipse 75% 55% at 50% 12%,rgba(175,0,0,.045),transparent 62%),
+  linear-gradient(175deg,var(--ivory) 0%,var(--cream) 100%);padding:140px 24px 100px;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='400' height='400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none}
+.hero-inner{position:relative;max-width:860px}
+.hero .eyebrow{color:var(--gold)}
+.hero h1{color:var(--charcoal);font-size:clamp(40px,6.2vw,74px);font-weight:500;margin-bottom:28px}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero p.sub{color:var(--text-soft);font-size:clamp(17px,2vw,20px);max-width:620px;margin:0 auto 44px;font-weight:300}
+
+/* Video frame */
+.film-frame{position:relative;max-width:760px;margin:0 auto 48px;aspect-ratio:16/9;background:linear-gradient(135deg,#3E2E28 0%,#2A1E1A 50%,#1B1310 100%);border:6px solid var(--white);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:box-shadow .4s;box-shadow:0 40px 90px -35px rgba(36,19,22,.45)}
+.film-frame:hover{box-shadow:0 46px 100px -35px rgba(36,19,22,.55)}
+.film-frame:hover .play-ring{transform:scale(1.08);background:#FFFFFF}
+.play-ring{width:88px;height:88px;border-radius:50%;background:rgba(255,255,255,.96);display:flex;align-items:center;justify-content:center;transition:all .4s ease;box-shadow:0 0 0 14px rgba(255,255,255,.14)}
+.play-ring svg path{fill:#AF0000}
+.play-ring svg{margin-left:5px}
+.film-frame .film-caption{position:absolute;bottom:18px;left:0;right:0;text-align:center;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:rgba(250,247,242,.5)}
+.hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);color:rgba(64,51,47,.45);font-size:11px;letter-spacing:.3em;text-transform:uppercase}
+.hero-scroll::after{content:'';display:block;width:1px;height:36px;background:linear-gradient(to bottom,rgba(175,0,0,.45),transparent);margin:10px auto 0}
+
+/* ---------- Proof strip ---------- */
+.proof-strip{background:var(--white);padding:34px 0;border-top:1px solid rgba(36,19,22,.05);border-bottom:1px solid rgba(36,19,22,.05)}
+.proof-strip .container{display:flex;justify-content:center;gap:64px;flex-wrap:wrap;align-items:center}
+.proof-item{text-align:center}
+.proof-item strong{display:block;font-family:var(--serif);font-size:30px;font-weight:500;color:var(--charcoal);line-height:1.2}
+.proof-item span{font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-soft)}
+.stars{color:var(--gold);letter-spacing:3px;font-size:15px}
+
+/* ---------- Warum ein Film ---------- */
+.why{background:var(--ivory)}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+@media(max-width:860px){.why-grid{grid-template-columns:1fr;gap:48px}}
+.why h2{font-size:clamp(32px,4vw,46px);margin-bottom:26px}
+.why h2 em{font-style:italic;color:var(--gold)}
+.why p{margin-bottom:20px;color:var(--text-soft)}
+.why p strong{color:var(--charcoal);font-weight:500}
+.regret-card{background:var(--charcoal);color:var(--ivory);padding:56px 48px;position:relative;box-shadow:0 40px 80px -40px rgba(36,19,22,.5)}
+.regret-card blockquote{font-family:var(--serif);font-size:clamp(22px,2.4vw,28px);font-style:italic;font-weight:400;line-height:1.45;margin-bottom:24px;position:relative}
+.regret-card cite{font-style:normal;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-light)}
+.regret-fact{margin-top:32px;padding-top:28px;border-top:1px solid rgba(250,247,242,.15);font-size:15px;color:rgba(250,247,242,.65)}
+.regret-fact strong{color:var(--gold-light);font-weight:500}
+
+/* Foto vs Film */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:64px;background:rgba(28,26,23,.08)}
+@media(max-width:680px){.compare{grid-template-columns:1fr}}
+.compare-col{background:var(--ivory);padding:44px 40px}
+.compare-col.film{background:var(--cream)}
+.compare-col h3{font-size:24px;margin-bottom:18px}
+.compare-col h3 span{color:var(--gold);font-style:italic}
+.compare-col ul{list-style:none}
+.compare-col li{padding:9px 0 9px 28px;position:relative;color:var(--text-soft);font-size:16px}
+.compare-col li::before{content:'—';position:absolute;left:0;color:var(--gold)}
+.compare-col.film li::before{content:'✦';font-size:11px;top:14px}
+.compare-col.film li{color:var(--text)}
+
+/* ---------- Filme / Portfolio ---------- */
+.films{background:var(--white)}
+.films .eyebrow{color:var(--gold)}
+.films h2{color:var(--charcoal);font-size:clamp(32px,4vw,46px);margin-bottom:18px}
+.films h2 em{font-style:italic;color:var(--gold)}
+.films .lead{color:var(--text-soft);max-width:560px;margin-bottom:64px}
+.films-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+@media(max-width:900px){.films-grid{grid-template-columns:1fr}}
+.film-card{cursor:pointer;transition:transform .4s ease}
+.film-card:hover{transform:translateY(-6px)}
+.film-thumb{aspect-ratio:4/5;position:relative;display:flex;align-items:center;justify-content:center;border:none;margin-bottom:20px;overflow:hidden;box-shadow:0 24px 55px -30px rgba(36,19,22,.35)}
+.film-thumb.t1{background:linear-gradient(150deg,#4C3A32 0%,#312420 55%,#201613 100%)}
+.film-thumb.t2{background:linear-gradient(150deg,#3E3230 0%,#292020 55%,#1A1312 100%)}
+.film-thumb.t3{background:linear-gradient(150deg,#473530 0%,#2E211E 55%,#1D1412 100%)}
+.film-thumb .mini-play{width:58px;height:58px;border-radius:50%;border:1px solid rgba(255,255,255,.6);display:flex;align-items:center;justify-content:center;transition:all .35s}
+.film-card:hover .mini-play{background:#FFFFFF;border-color:#FFFFFF}
+.film-card:hover .mini-play svg path{fill:#AF0000}
+.film-thumb .sound-tag{position:absolute;top:16px;left:16px;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.4);padding:6px 12px}
+.film-card h3{color:var(--charcoal);font-size:22px;font-weight:500}
+.film-card h3 em{font-style:italic;color:var(--gold)}
+.film-card p{color:var(--text-soft);font-size:14.5px;margin-top:4px}
+.films-note{margin-top:56px;text-align:center;color:var(--text-soft);font-style:italic;font-family:var(--serif);font-size:19px}
+
+/* ---------- Approach / Was ihr wollt ---------- */
+.approach{background:var(--ivory)}
+.approach-head{text-align:center;max-width:680px;margin:0 auto 72px}
+.approach-head h2{font-size:clamp(32px,4vw,46px);margin-bottom:20px}
+.approach-head h2 em{font-style:italic;color:var(--gold)}
+.approach-head p{color:var(--text-soft)}
+.promise-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(28,26,23,.08)}
+@media(max-width:900px){.promise-grid{grid-template-columns:1fr}}
+.promise{background:var(--ivory);padding:48px 38px;transition:background .35s}
+.promise:hover{background:var(--cream)}
+.promise .num{font-family:var(--serif);font-style:italic;font-size:20px;color:var(--gold);display:block;margin-bottom:18px}
+.promise h3{font-size:22px;margin-bottom:14px}
+.promise p{font-size:15.5px;color:var(--text-soft)}
+
+/* ---------- Testimonials ---------- */
+.testimonials{background:var(--cream)}
+.testimonials .head{text-align:center;margin-bottom:68px}
+.testimonials h2{font-size:clamp(32px,4vw,46px)}
+.testimonials h2 em{font-style:italic;color:var(--gold)}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+@media(max-width:900px){.testi-grid{grid-template-columns:1fr;max-width:560px;margin:0 auto}}
+.testi{background:var(--white);padding:44px 38px;display:flex;flex-direction:column;box-shadow:0 20px 50px -30px rgba(28,26,23,.18)}
+.testi .stars{margin-bottom:22px}
+.testi blockquote{font-family:var(--serif);font-size:20px;font-style:italic;line-height:1.5;color:var(--charcoal);flex:1;margin-bottom:26px}
+.testi .who{display:flex;align-items:center;gap:14px}
+.testi .avatar{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--gold-light),var(--gold));display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-style:italic;color:var(--white);font-size:17px;flex-shrink:0}
+.testi .who strong{display:block;font-weight:500;color:var(--charcoal);font-size:15px}
+.testi .who span{font-size:13px;color:var(--text-soft)}
+.google-row{text-align:center;margin-top:48px;font-size:14px;color:var(--text-soft);letter-spacing:.04em}
+.google-row strong{color:var(--charcoal)}
+
+/* ---------- About ---------- */
+.about{background:var(--ivory)}
+.about-grid{display:grid;grid-template-columns:5fr 6fr;gap:80px;align-items:center}
+@media(max-width:860px){.about-grid{grid-template-columns:1fr;gap:48px}}
+.about-portrait{aspect-ratio:4/5;background:linear-gradient(160deg,#EBCFC8 0%,#CE9C96 60%,#A5655F 100%);position:relative;display:flex;align-items:flex-end;justify-content:center;overflow:hidden}
+.about-portrait::after{content:'';position:absolute;inset:14px;border:1px solid rgba(250,247,242,.5);pointer-events:none}
+.about-portrait span{font-family:var(--serif);font-style:italic;color:rgba(255,255,255,.85);font-size:15px;padding-bottom:34px;letter-spacing:.06em}
+.about h2{font-size:clamp(32px,4vw,44px);margin-bottom:24px}
+.about h2 em{font-style:italic;color:var(--gold)}
+.about p{color:var(--text-soft);margin-bottom:18px}
+.about p strong{color:var(--charcoal);font-weight:500}
+.about .signature{font-family:var(--script);font-size:38px;color:var(--gold);margin-top:28px;line-height:1.1}
+.about .signature small{display:block;font-family:var(--sans);font-size:10.5px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--charcoal);margin-top:6px}
+
+/* ---------- Prozess ---------- */
+.process{background:var(--cream)}
+.process .head{text-align:center;margin-bottom:72px}
+.process .eyebrow{color:var(--gold)}
+.process h2{color:var(--charcoal);font-size:clamp(32px,4vw,46px)}
+.process h2 em{font-style:italic;color:var(--gold)}
+.process .head p{color:var(--text-soft);max-width:540px;margin:18px auto 0}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;counter-reset:step;align-items:start}
+@media(max-width:860px){.steps{grid-template-columns:1fr;gap:40px;max-width:480px;margin:0 auto}}
+.step::before{counter-increment:step;content:'0' counter(step);display:block;font-family:var(--serif);font-style:italic;font-size:56px;line-height:1;color:transparent;-webkit-text-stroke:1px var(--gold);margin-bottom:16px;opacity:.9}
+.step h3{color:var(--charcoal);font-size:23px;margin-bottom:14px}
+.step p{color:var(--text-soft);font-size:15.5px}
+.step p strong{color:var(--gold);font-weight:500}
+
+/* ---------- Pakete ---------- */
+.pricing{background:var(--ivory)}
+.pricing .head{text-align:center;max-width:640px;margin:0 auto 72px}
+.pricing h2{font-size:clamp(32px,4vw,46px);margin-bottom:18px}
+.pricing h2 em{font-style:italic;color:var(--gold)}
+.pricing .head p{color:var(--text-soft)}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;align-items:stretch}
+@media(max-width:900px){.price-grid{grid-template-columns:1fr;max-width:480px;margin:0 auto}}
+.price-card{background:var(--white);border:1px solid rgba(28,26,23,.08);padding:52px 42px;display:flex;flex-direction:column;transition:all .4s ease}
+.price-card:hover{transform:translateY(-6px);box-shadow:0 30px 60px -30px rgba(28,26,23,.25)}
+.price-card.featured{background:var(--charcoal);color:var(--ivory);border-color:var(--charcoal);position:relative;box-shadow:0 40px 80px -40px rgba(36,19,22,.5)}
+.price-card.featured .tag{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:#AF0000;color:#FFFFFF;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;padding:8px 18px;font-weight:500;white-space:nowrap}
+.price-card h3{font-size:26px;margin-bottom:6px}
+.price-card.featured h3{color:var(--ivory)}
+.price-card .for{font-size:13.5px;color:var(--text-soft);margin-bottom:28px;font-style:italic;font-family:var(--serif);font-size:16px}
+.price-card.featured .for{color:rgba(250,247,242,.55)}
+.price-card .price{font-family:var(--serif);font-size:40px;font-weight:500;color:var(--charcoal);margin-bottom:4px}
+.price-card.featured .price{color:var(--gold-light)}
+.price-card .price small{font-family:var(--sans);font-size:13px;font-weight:300;color:var(--text-soft);letter-spacing:.06em}
+.price-card.featured .price small{color:rgba(250,247,242,.5)}
+.price-card ul{list-style:none;margin:30px 0 36px;flex:1}
+.price-card li{padding:9px 0 9px 26px;position:relative;font-size:15px;color:var(--text-soft);border-bottom:1px solid rgba(28,26,23,.05)}
+.price-card.featured li{color:rgba(250,247,242,.75);border-color:rgba(250,247,242,.08)}
+.price-card li::before{content:'✦';position:absolute;left:0;color:var(--gold);font-size:10px;top:13px}
+.price-card .btn{width:100%}
+.price-card.featured .btn{background:#AF0000;color:#FFFFFF}
+.price-card.featured .btn:hover{background:#8B0000;color:#FFFFFF}
+.pricing-note{text-align:center;margin-top:44px;color:var(--text-soft);font-size:14.5px}
+.pricing-note em{font-family:var(--serif);font-size:17px}
+
+/* ---------- Sicherheit ---------- */
+.safety{background:var(--cream)}
+.safety .head{text-align:center;max-width:660px;margin:0 auto 64px}
+.safety h2{font-size:clamp(30px,3.6vw,42px);margin-bottom:16px}
+.safety h2 em{font-style:italic;color:var(--gold)}
+.safety .head p{color:var(--text-soft)}
+.safety-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+@media(max-width:960px){.safety-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.safety-grid{grid-template-columns:1fr}}
+.safe{background:var(--white);padding:38px 32px;text-align:center}
+.safe .icon{width:52px;height:52px;margin:0 auto 20px;border-radius:50%;border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;color:var(--gold);font-family:var(--serif);font-style:italic;font-size:20px}
+.safe h3{font-size:19px;margin-bottom:10px}
+.safe p{font-size:14px;color:var(--text-soft)}
+
+/* ---------- FAQ ---------- */
+.faq{background:var(--ivory)}
+.faq .container{max-width:820px}
+.faq .head{text-align:center;margin-bottom:56px}
+.faq h2{font-size:clamp(30px,3.6vw,42px)}
+.faq h2 em{font-style:italic;color:var(--gold)}
+details{border-bottom:1px solid rgba(28,26,23,.1)}
+details summary{cursor:pointer;padding:26px 40px 26px 0;font-family:var(--serif);font-size:21px;font-weight:500;color:var(--charcoal);list-style:none;position:relative;transition:color .3s}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:'+';position:absolute;right:4px;top:50%;transform:translateY(-50%);font-family:var(--sans);font-weight:300;font-size:26px;color:var(--gold);transition:transform .3s}
+details[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+details summary:hover{color:var(--gold)}
+details .answer{padding:0 40px 28px 0;color:var(--text-soft);font-size:16px}
+details .answer strong{color:var(--charcoal);font-weight:500}
+
+/* ---------- Final CTA / Kontakt ---------- */
+.final{background:
+  radial-gradient(ellipse 75% 55% at 50% 0%,rgba(175,0,0,.05),transparent 60%),
+  linear-gradient(175deg,var(--cream) 0%,var(--ivory) 100%);color:var(--text);text-align:center}
+.final .eyebrow{color:var(--gold)}
+.final h2{color:var(--charcoal);font-size:clamp(34px,4.6vw,54px);margin-bottom:22px;max-width:760px;margin-left:auto;margin-right:auto}
+.final h2 em{font-style:italic;color:var(--gold)}
+.final .lead{color:var(--text-soft);max-width:560px;margin:0 auto 20px}
+.scarcity{display:inline-block;margin:8px auto 48px;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(175,0,0,.3);padding:12px 26px;background:var(--white)}
+.form-card{max-width:560px;margin:0 auto;background:var(--white);border:1px solid rgba(36,19,22,.06);padding:52px 48px;text-align:left;box-shadow:0 40px 90px -45px rgba(36,19,22,.4)}
+@media(max-width:560px){.form-card{padding:40px 26px}}
+.form-card label{display:block;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-soft);margin-bottom:8px;font-weight:500}
+.form-card input,.form-card textarea{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(36,19,22,.18);color:var(--text);font-family:var(--sans);font-size:17px;font-weight:300;padding:10px 2px 14px;margin-bottom:32px;transition:border-color .3s;outline:none;resize:none}
+.form-card input:focus,.form-card textarea:focus{border-color:var(--gold)}
+.form-card input::placeholder,.form-card textarea::placeholder{color:rgba(64,51,47,.35)}
+.form-card .btn{width:100%;background:#AF0000;color:#FFFFFF}
+.form-card .btn:hover{background:#8B0000;color:#FFFFFF}
+.form-success{display:none;text-align:center;padding:40px 0}
+.form-success h3{color:var(--charcoal);font-size:28px;margin-bottom:14px}
+.form-success p{color:var(--text-soft)}
+.trust-row{margin-top:36px;display:flex;justify-content:center;gap:36px;flex-wrap:wrap;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-soft)}
+.trust-row span::before{content:'✦ ';color:var(--gold)}
+
+/* ---------- Footer ---------- */
+footer{background:var(--white);border-top:1px solid rgba(36,19,22,.08);color:var(--text-soft);padding:52px 0;font-size:13.5px}
+footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+footer .logo{font-size:17px}
+footer nav-links a{margin-left:24px}
+.foot-links a{margin-left:28px;transition:color .3s;letter-spacing:.04em}
+.foot-links a:hover{color:var(--gold)}
+
+/* ---------- Markenzeichen: Original-Logo (hochauflösend vorgerendert) ---------- */
+.brand-mark,.section-mark,.logo-mark{image-rendering:auto;-webkit-backface-visibility:hidden;transform:translateZ(0)}
+.brand-mark{display:block;height:80px;width:auto;margin:0 auto 26px;filter:drop-shadow(0 8px 18px rgba(36,19,22,.16))}
+.section-mark{display:block;height:52px;width:auto;margin:0 auto 24px}
+.section-mark.left{margin:0 0 22px}
+
+/* ---------- Section CTA ---------- */
+.section-cta{text-align:center;margin-top:64px}
+.section-cta .cta-line{display:block;font-family:var(--serif);font-style:italic;font-size:20px;color:var(--text-soft);margin-bottom:22px}
+.section-cta.on-dark .cta-line{color:var(--text-soft)}
+.section-cta.on-dark .btn{background:#AF0000;color:#FFFFFF}
+.section-cta.on-dark .btn:hover{background:#8B0000;color:#FFFFFF}
+.btn-note.on-dark{color:var(--text-soft)}
+@media(max-width:768px){.section-cta{margin-top:48px}}
+
+/* ---------- Reveal Animation ---------- */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<!-- ======================= NAV ======================= -->
+<nav id="nav">
+  <div class="container">
+    <a href="#" class="logo"><img src="logo-weddings-frames.svg" class="logo-mark" alt=""><span class="logo-w">Weddings</span><span class="logo-by">by Frames.</span></a>
+    <a href="#anfrage" class="nav-cta">Verfügbarkeit anfragen</a>
+  </div>
+</nav>
+
+<!-- ======================= HERO ======================= -->
+<header class="hero">
+  <div class="hero-inner">
+    <img src="logo-weddings-frames.svg" class="brand-mark" alt="Weddings by Frames">
+    <span class="eyebrow">Exklusive Hochzeitsfilme</span>
+    <h1>Euer Tag vergeht in Stunden.<br><em>Euer Film bleibt für immer.</em></h1>
+    <p class="sub">Wir halten fest, was Fotos nicht können: das Zittern in der Stimme beim Eheversprechen, das Lachen eurer Gäste, den Moment, in dem alle Planung zu Gefühl wird.</p>
+
+    <div class="film-frame" role="button" aria-label="Beispielfilm abspielen" onclick="playFilm(this)">
+      <div class="play-ring">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M8 5.5v13l10-6.5-10-6.5z" fill="#FAF7F2"/></svg>
+      </div>
+      <span class="film-caption">Film ansehen — Ton an. Er erklärt mehr als jede Zeile Text.</span>
+    </div>
+
+    <a href="#anfrage" class="btn">Unverbindlich Verfügbarkeit anfragen</a>
+    <span class="btn-note">Kostenloses Kennenlerngespräch · Antwort innerhalb von 24 Stunden</span>
+  </div>
+  <div class="hero-scroll">Entdecken</div>
+</header>
+
+<!-- ======================= PROOF STRIP ======================= -->
+<div class="proof-strip">
+  <div class="container">
+    <div class="proof-item"><strong>120+</strong><span>begleitete Hochzeiten</span></div>
+    <div class="proof-item"><strong><span class="stars">★★★★★</span></strong><span>5,0 auf Google</span></div>
+    <div class="proof-item"><strong>8 Wochen</strong><span>garantierte Lieferzeit</span></div>
+    <div class="proof-item"><strong>12</strong><span>Hochzeiten pro Jahr — mehr nicht</span></div>
+  </div>
+</div>
+
+<!-- ======================= WARUM EIN FILM ======================= -->
+<section class="why" id="warum">
+  <div class="container">
+    <div class="why-grid">
+      <div class="reveal">
+        <img src="logo-weddings-frames.svg" class="section-mark left" alt="">
+        <span class="eyebrow">Warum ein Hochzeitsfilm</span>
+        <h2>Ihr werdet an diesem Tag <em>nur die Hälfte</em> mitbekommen.</h2>
+        <p>Das sagen euch alle, die schon geheiratet haben: Der Tag rast. Zwischen Trauung, Gratulationen und erstem Tanz seid ihr in einem wunderschönen Tunnel — und verpasst dabei so vieles.</p>
+        <p><strong>Die Tränen eurer Mutter während des Jaworts. Die Reaktion der Gäste, als ihr den Saal betretet. Was euer Trauzeuge sagte, als ihr gerade woanders wart.</strong></p>
+        <p>Fotos zeigen euch später, wie es aussah. Aber nur ein Film gibt euch zurück, wie es <em style="font-family:var(--serif)">klang</em> und wie es sich <em style="font-family:var(--serif)">anfühlte</em> — so oft ihr wollt, euer Leben lang.</p>
+      </div>
+      <div class="regret-card reveal">
+        <blockquote>Das Einzige, was wir an unserer Hochzeit wirklich bereuen? Dass wir keinen Videografen hatten.</blockquote>
+        <cite>— Der häufigste Satz verheirateter Paare</cite>
+        <div class="regret-fact">In Umfragen unter Ehepaaren ist der Verzicht auf den Hochzeitsfilm <strong>Bedauern Nr. 1</strong> — noch vor jeder anderen Antwort, denn es gibt keinen zweiten Versuch.</div>
+      </div>
+    </div>
+
+    <div class="compare reveal">
+      <div class="compare-col">
+        <h3>Eure Fotos zeigen</h3>
+        <ul>
+          <li>Wie euer Tag aussah</li>
+          <li>Eingefrorene Augenblicke</li>
+          <li>Perfekte, stille Bilder</li>
+        </ul>
+      </div>
+      <div class="compare-col film">
+        <h3>Euer Film gibt euch <span>zurück</span></h3>
+        <ul>
+          <li>Eure Stimmen beim Eheversprechen — Wort für Wort</li>
+          <li>Die Rede eures Vaters, die Stimme eurer Oma</li>
+          <li>Bewegung, Musik, Lachen — den ganzen Tag zum Wiedererleben</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-cta reveal">
+      <span class="cta-line">Es gibt keinen zweiten Versuch — aber einen ersten Schritt.</span>
+      <a href="#anfrage" class="btn">Unverbindlich Verfügbarkeit anfragen</a>
+      <span class="btn-note">Kostenlos & ohne Verpflichtung · Antwort in 24 h</span>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= FILME ======================= -->
+<section class="films" id="filme">
+  <div class="container">
+    <img src="logo-weddings-frames.svg" class="section-mark left reveal" alt="">
+    <span class="eyebrow reveal">Unsere Filme</span>
+    <h2 class="reveal">Seht selbst. <em>Hört selbst.</em></h2>
+    <p class="lead reveal">Keine gestellten Szenen, kein Kitsch. Echte Paare, echte Momente, echter Ton — erzählt wie ein Film, der nur euch gehört.</p>
+
+    <div class="films-grid">
+      <div class="film-card reveal" onclick="playFilm(this)">
+        <div class="film-thumb t1">
+          <span class="sound-tag">✦ Mit Originalton</span>
+          <div class="mini-play"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M8 5.5v13l10-6.5-10-6.5z" fill="#FAF7F2"/></svg></div>
+        </div>
+        <h3>Laura <em>&</em> Jonas</h3>
+        <p>Freie Trauung · Weingut, Rheingau</p>
+      </div>
+      <div class="film-card reveal" onclick="playFilm(this)">
+        <div class="film-thumb t2">
+          <span class="sound-tag">✦ Mit Originalton</span>
+          <div class="mini-play"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M8 5.5v13l10-6.5-10-6.5z" fill="#FAF7F2"/></svg></div>
+        </div>
+        <h3>Melina <em>&</em> David</h3>
+        <p>Kirchliche Trauung · Gut Sonnenhausen</p>
+      </div>
+      <div class="film-card reveal" onclick="playFilm(this)">
+        <div class="film-thumb t3">
+          <span class="sound-tag">✦ Mit Originalton</span>
+          <div class="mini-play"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M8 5.5v13l10-6.5-10-6.5z" fill="#FAF7F2"/></svg></div>
+        </div>
+        <h3>Anna <em>&</em> Ben</h3>
+        <p>Destination Wedding · Toskana</p>
+      </div>
+    </div>
+    <p class="films-note reveal">Jeder dieser Filme wird heute noch angesehen. An Jahrestagen, mit den Eltern, irgendwann mit den Kindern.</p>
+
+    <div class="section-cta on-dark reveal">
+      <span class="cta-line">Stellt euch euren eigenen Film vor — mit euren Stimmen, euren Menschen.</span>
+      <a href="#anfrage" class="btn">Euren Termin unverbindlich anfragen</a>
+      <span class="btn-note on-dark">Nur 12 Hochzeiten pro Jahr · Antwort in 24 h</span>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= APPROACH ======================= -->
+<section class="approach">
+  <div class="container">
+    <div class="approach-head reveal">
+      <img src="logo-weddings-frames.svg" class="section-mark" alt="">
+      <span class="eyebrow">Unser Versprechen an euch</span>
+      <h2>Ihr sollt <em>feiern</em> — nicht drehen.</h2>
+      <p>Wir wissen, was Paare an ihrem Tag von einem Videografen wollen. Und vor allem: was nicht.</p>
+    </div>
+    <div class="promise-grid">
+      <div class="promise reveal">
+        <span class="num">01 — Unsichtbar</span>
+        <h3>Ihr werdet uns kaum bemerken</h3>
+        <p>Keine Regieanweisungen, kein „bitte nochmal küssen". Wir arbeiten dokumentarisch und diskret — eure Gäste werden fragen, wann eigentlich gefilmt wurde.</p>
+      </div>
+      <div class="promise reveal">
+        <span class="num">02 — Echt</span>
+        <h3>Kein Posing. Keine Schauspielerei.</h3>
+        <p>Ihr müsst nichts können und nichts stellen. Die schönsten Momente entstehen von selbst — unsere Aufgabe ist, im richtigen Augenblick da zu sein. Nur für euer Paarshooting nehmen wir uns die Zeit für Anweisungen.</p>
+      </div>
+      <div class="promise reveal">
+        <span class="num">03 — Im Team</span>
+        <h3>Hand in Hand mit eurem Fotografen</h3>
+        <p>Wir stimmen uns vorab mit eurem Fotografen ab und kommen uns nie in die Quere. Ein eingespielter Ablauf statt konkurrierender Dienstleister.</p>
+      </div>
+      <div class="promise reveal">
+        <span class="num">04 — Euer Klang</span>
+        <h3>Eure Stimmen, professionell aufgenommen</h3>
+        <p>Eheversprechen, Reden, das erste „Ja" — mit diskreten Funkmikrofonen in Studioqualität festgehalten. Das ist der Teil eures Films, der in 30 Jahren am wertvollsten sein wird.</p>
+      </div>
+      <div class="promise reveal">
+        <span class="num">05 — Eure Geschichte</span>
+        <h3>Kein Schema F</h3>
+        <p>Kein Baukasten-Video mit Standardmusik. Wir lernen euch vorher kennen und schneiden euren Film so, dass er sich anfühlt wie ihr — euer Humor, eure Menschen, euer Tag.</p>
+      </div>
+      <div class="promise reveal">
+        <span class="num">06 — Verlässlich</span>
+        <h3>Fester Liefertermin. Versprochen.</h3>
+        <p>Euer Trailer und euer Film kommen innerhalb von 8 Wochen — garantiert und vertraglich zugesichert. Kein monatelanges Warten.</p>
+      </div>
+    </div>
+
+    <div class="section-cta reveal">
+      <span class="cta-line">Klingt nach dem, was ihr euch für euren Tag wünscht?</span>
+      <a href="#anfrage" class="btn">Kostenloses Kennenlerngespräch anfragen</a>
+      <span class="btn-note">Unverbindlich · Ihr entscheidet danach in Ruhe</span>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= TESTIMONIALS ======================= -->
+<section class="testimonials">
+  <div class="container">
+    <div class="head reveal">
+      <img src="logo-weddings-frames.svg" class="section-mark" alt="">
+      <span class="eyebrow">Was Paare sagen</span>
+      <h2>Nach der Hochzeit wissen sie es <em>am besten.</em></h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi reveal">
+        <div class="stars">★★★★★</div>
+        <blockquote>„Wir haben beim ersten Ansehen beide geweint. Man vergisst so schnell, wie sich dieser Tag angefühlt hat — und der Film bringt alles zurück. Die beste Entscheidung unserer ganzen Planung."</blockquote>
+        <div class="who">
+          <div class="avatar">L&J</div>
+          <div><strong>Laura & Jonas</strong><span>Hochzeit im Rheingau, 2025</span></div>
+        </div>
+      </div>
+      <div class="testi reveal">
+        <div class="stars">★★★★★</div>
+        <blockquote>„Ich wollte eigentlich keine Kamera den ganzen Tag um mich haben. Am Ende haben wir das Team ehrlich kaum bemerkt — und trotzdem ist jeder wichtige Moment im Film. Bis heute ein Rätsel."</blockquote>
+        <div class="who">
+          <div class="avatar">M&D</div>
+          <div><strong>Melina & David</strong><span>Gut Sonnenhausen, 2025</span></div>
+        </div>
+      </div>
+      <div class="testi reveal">
+        <div class="stars">★★★★★</div>
+        <blockquote>„Mein Vater ist letztes Jahr verstorben. Seine Rede in unserem Hochzeitsfilm zu haben, seine Stimme — das ist unbezahlbar. Bucht den Film. Ihr werdet es nie bereuen."</blockquote>
+        <div class="who">
+          <div class="avatar">A&B</div>
+          <div><strong>Anna & Ben</strong><span>Toskana, 2024</span></div>
+        </div>
+      </div>
+    </div>
+    <p class="google-row reveal"><strong>5,0 ★</strong> auf Google · Empfohlen von Locations & Fotografen</p>
+
+    <div class="section-cta reveal">
+      <span class="cta-line">In einem Jahr seid ihr eines dieser Paare — oder ihr wünscht euch, ihr wärt es.</span>
+      <a href="#anfrage" class="btn">Jetzt Verfügbarkeit prüfen</a>
+      <span class="btn-note">Dauert unter einer Minute · Völlig unverbindlich</span>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= ABOUT ======================= -->
+<section class="about" id="ueber">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-portrait reveal"><span>Euer Platz für ein echtes Portrait</span></div>
+      <div class="reveal">
+        <img src="logo-weddings-frames.svg" class="section-mark left" alt="">
+        <span class="eyebrow">Wer hinter der Kamera steht</span>
+        <h2>Ihr lasst uns an dem <em>intimsten Tag eures Lebens</em> teilhaben. Das nehmen wir ernst.</h2>
+        <p>Hallo, wir sind Weddings.by.Frames. Wir filmen Hochzeiten, weil wir glauben, dass die wertvollsten Dinge im Leben flüchtig sind — und dass es unsere Aufgabe ist, sie festzuhalten, ohne sie zu stören.</p>
+        <p><strong>Deshalb nehmen wir nur 12 Hochzeiten pro Jahr an.</strong> Nicht als Verkaufstrick, sondern weil jeder Film Wochen an Sorgfalt bekommt: vom Kennenlernen vor eurem Tag bis zum letzten Schnitt.</p>
+        <p>Wenn ihr Paare seid, die keinen Kitsch wollen, sondern einen ehrlichen, hochwertigen Film über den echten Tag — dann passen wir vermutlich sehr gut zusammen.</p>
+        <div class="signature">Weddings<small>by Frames.</small></div>
+      </div>
+    </div>
+
+    <div class="section-cta reveal">
+      <span class="cta-line">Lernt uns kennen, bevor ihr entscheidet — genau dafür ist das Erstgespräch da.</span>
+      <a href="#anfrage" class="btn">Kennenlerngespräch vereinbaren</a>
+      <span class="btn-note">Per Videocall · Kostenlos · Kein Verkaufstermin</span>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= PROZESS ======================= -->
+<section class="process">
+  <div class="container">
+    <div class="head reveal">
+      <img src="logo-weddings-frames.svg" class="section-mark" alt="">
+      <span class="eyebrow">So einfach ist es</span>
+      <h2>Von der Anfrage bis zu <em>eurem Film</em></h2>
+      <p>Ihr plant gerade genug. Bei uns gibt es genau drei Schritte — und ab Schritt drei habt ihr eine Sorge weniger.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <h3>Unverbindlich anfragen</h3>
+        <p>Ihr schreibt uns Datum und Location — <strong>in unter einer Minute</strong>. Wir antworten innerhalb von 24 Stunden, ob euer Termin frei ist.</p>
+      </div>
+      <div class="step reveal">
+        <h3>Kennenlernen</h3>
+        <p>Ein entspanntes Videocall-Gespräch — kein Verkaufstermin. Ihr erzählt von eurem Tag, wir zeigen euch Filme und beantworten alles. <strong>Danach entscheidet ihr in Ruhe.</strong></p>
+      </div>
+      <div class="step reveal">
+        <h3>Euer Tag. Euer Film.</h3>
+        <p>Wir kümmern uns um alles — Absprache mit Location und Fotograf inklusive. Und nach <strong>8 Wochen</strong> habt ihr euren persönlichen und einzigartigen Film, der euren wertvollsten Tag für immer festhält.</p>
+      </div>
+    </div>
+
+    <div class="section-cta on-dark reveal">
+      <span class="cta-line">Schritt 1 kostet euch eine Minute — und nimmt euch eine Sorge ab.</span>
+      <a href="#anfrage" class="btn">Jetzt Schritt 1 machen</a>
+      <span class="btn-note on-dark">Unverbindlich anfragen · Antwort in 24 h</span>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= PAKETE ======================= -->
+<section class="pricing" id="pakete">
+  <div class="container">
+    <div class="head reveal">
+      <img src="logo-weddings-frames.svg" class="section-mark" alt="">
+      <span class="eyebrow">Investition</span>
+      <h2>Transparent. Alles drin. <em>Keine Sternchen.</em></h2>
+      <p>Anfahrt, Musiklizenzen, Farbkorrektur, Datensicherung — in jedem Paket enthalten. Der Preis, den ihr seht, ist der Preis, den ihr zahlt.</p>
+    </div>
+    <div class="price-grid">
+      <div class="price-card reveal">
+        <h3>Der Essenz-Film</h3>
+        <p class="for">Für Paare, die das Herzstück wollen</p>
+        <div class="price">3.200 €<small> inkl. MwSt.</small></div>
+        <ul>
+          <li>8 Stunden Begleitung (Getting Ready bis erster Tanz)</li>
+          <li>Hochzeitsfilm, 7–10 Minuten</li>
+          <li>Eheversprechen & Reden in Originalton</li>
+          <li>Trailer für Familie & Instagram (1 Min.)</li>
+          <li>Online-Galerie zum Teilen & Download in 4K</li>
+        </ul>
+        <a href="#anfrage" class="btn">Verfügbarkeit anfragen</a>
+      </div>
+      <div class="price-card featured reveal">
+        <span class="tag">Von den meisten Paaren gewählt</span>
+        <h3>Der Signature-Film</h3>
+        <p class="for">Für Paare, die den ganzen Tag festhalten wollen</p>
+        <div class="price">ab 4.400 €<small> inkl. MwSt.</small></div>
+        <ul>
+          <li>12 Stunden Begleitung — bis zur Party</li>
+          <li>Hochzeitsfilm, 10–12 Minuten</li>
+          <li>Zweiter Kameramann für jede Perspektive</li>
+          <li>Komplette Trauung & Reden als eigener Film</li>
+          <li>Persönliches Kennenlernen & Ablaufberatung</li>
+        </ul>
+        <a href="#anfrage" class="btn">Verfügbarkeit anfragen</a>
+      </div>
+      <div class="price-card reveal">
+        <h3>Das Vermächtnis</h3>
+        <p class="for">Für Paare, die alles wollen — für Generationen</p>
+        <div class="price">ab 5.900 €<small> inkl. MwSt.</small></div>
+        <ul>
+          <li>Ganztägige Begleitung ohne Stundenlimit</li>
+          <li>Kinofilm, 15–20 Minuten</li>
+          <li>Zwei Kameramänner + Drohnenaufnahmen</li>
+          <li>Interviews mit euren Liebsten am Hochzeitstag</li>
+          <li>Ausführliche persönliche Beratung & Kennenlernen</li>
+          <li>Auch für Destination Weddings, europaweit</li>
+        </ul>
+        <a href="#anfrage" class="btn">Verfügbarkeit anfragen</a>
+      </div>
+    </div>
+    <p class="pricing-note reveal"><em>Zum Vergleich: Blumen und Torte kosten oft ähnlich viel — und sind nach einem Tag Erinnerung. Euer Film wird mit jedem Jahr wertvoller.</em><br>Ratenzahlung möglich · Wunschtermin wird erst mit Vertrag fest reserviert</p>
+  </div>
+</section>
+
+<!-- ======================= SICHERHEIT ======================= -->
+<section class="safety">
+  <div class="container">
+    <div class="head reveal">
+      <img src="logo-weddings-frames.svg" class="section-mark" alt="">
+      <span class="eyebrow">Kein zweiter Versuch — wir wissen das</span>
+      <h2>Euer Tag passiert <em>genau einmal.</em> Deshalb sichern wir alles doppelt.</h2>
+      <p>Die Frage „Was, wenn etwas schiefgeht?" solltet ihr nie stellen müssen. Unsere Antwort darauf:</p>
+    </div>
+    <div class="safety-grid">
+      <div class="safe reveal">
+        <div class="icon">2×</div>
+        <h3>Doppelte Technik</h3>
+        <p>Jede Kamera zeichnet auf zwei Speicherkarten gleichzeitig auf. Backup-Kameras, -Objektive und -Mikrofone sind immer dabei.</p>
+      </div>
+      <div class="safe reveal">
+        <div class="icon">§</div>
+        <h3>Klarer Vertrag</h3>
+        <p>Leistungen, Liefertermin und Preis schriftlich fixiert. Veröffentlichung eurer Aufnahmen nur mit eurem Einverständnis.</p>
+      </div>
+      <div class="safe reveal">
+        <div class="icon">✚</div>
+        <h3>Ausfallsicherung</h3>
+        <p>Vollversichert und mit einem Netzwerk erfahrener Kollegen im Rücken. Euer Termin ist abgesichert — auch für den Fall der Fälle.</p>
+      </div>
+      <div class="safe reveal">
+        <div class="icon">∞</div>
+        <h3>Sichere Archivierung</h3>
+        <p>Euer Material wird mehrfach und georedundant gesichert und mindestens 2 Jahre aufbewahrt. Euer Film gehört euch — in voller 4K-Qualität.</p>
+      </div>
+    </div>
+
+    <div class="section-cta reveal">
+      <span class="cta-line">Noch eine Sicherheit: Die Anfrage verpflichtet euch zu nichts.</span>
+      <a href="#anfrage" class="btn">Unverbindlich Verfügbarkeit anfragen</a>
+      <span class="btn-note">Euer Termin wird erst mit Vertrag fest reserviert</span>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= FAQ ======================= -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="head reveal">
+      <img src="logo-weddings-frames.svg" class="section-mark" alt="">
+      <span class="eyebrow">Eure Fragen — ehrlich beantwortet</span>
+      <h2>Woran ihr <em>gerade denkt</em></h2>
+    </div>
+
+    <details class="reveal">
+      <summary>Lohnt sich ein Hochzeitsfilm wirklich? Wir haben doch schon einen Fotografen.</summary>
+      <div class="answer">Fotos und Film ersetzen sich nicht — sie ergänzen sich. Eure Fotos frieren die schönsten Augenblicke ein. Aber <strong>kein Foto der Welt kann euer Eheversprechen wiedergeben</strong>, die Stimme eures Vaters bei seiner Rede oder das Lachen eurer Oma. Genau das ist es, was Paare Jahre später am meisten vermissen. Nicht umsonst ist „kein Video" das häufigste Bedauern verheirateter Paare.</div>
+    </details>
+    <details class="reveal">
+      <summary>Wir wollen nicht den ganzen Tag eine Kamera im Gesicht haben.</summary>
+      <div class="answer">Verstehen wir zu 100 % — deshalb arbeiten wir rein dokumentarisch. Keine Regieanweisungen, keine gestellten Szenen, keine Unterbrechungen. Das häufigste Feedback unserer Paare: <strong>„Wir haben euch kaum bemerkt."</strong> Nur für euer Paarshooting stehlen wir euch 20 Minuten — die meisten Paare beschreiben sie hinterher als wohltuende Pause vom Trubel.</div>
+    </details>
+    <details class="reveal">
+      <summary>Wir sind überhaupt nicht die Typen, die vor der Kamera gut aussehen.</summary>
+      <div class="answer">Das sagen fast alle unsere Paare vorher — und keins hinterher. Ihr müsst nichts stellen und nichts können: Wir filmen echte Momente, kein Posing. In unseren Filmen seht ihr ganz normale Paare, keine Models. Echt schlägt perfekt. Immer.</div>
+    </details>
+    <details class="reveal">
+      <summary>Warum kostet ein Hochzeitsfilm 3.000 € oder mehr?</summary>
+      <div class="answer">In eurem Film stecken 150+ Stunden Arbeit: Vorbereitung, ein kompletter Drehtag mit Profi-Equipment (und Backup für alles), und danach Wochen an Schnitt, Tonmischung und Farbkorrektur. Aber ehrlicher ist diese Rechnung: <strong>Euer Film kostet weniger als viele andere Ausgaben, die nach dem Tag einfach weg sind</strong> — und er ist das Einzige neben den Fotos, das von eurem Tag bleibt. Auf 50 Jahre Ehe gerechnet sind das wenige Cent pro Tag für die Möglichkeit, den wichtigsten Tag eures Lebens jederzeit wieder zu erleben.</div>
+    </details>
+    <details class="reveal">
+      <summary>Was, wenn bei euch etwas schiefgeht? Es gibt keine zweite Chance.</summary>
+      <div class="answer">Richtig — und genau deshalb ist Sicherheit unser wichtigstes Versprechen: doppelte Aufzeichnung auf jeder Kamera, komplettes Backup-Equipment vor Ort, Vollversicherung, georedundante Datensicherung und ein Kollegen-Netzwerk für den absoluten Notfall. <strong>In über 120 Hochzeiten haben wir noch nie einen Moment verloren.</strong></div>
+    </details>
+    <details class="reveal">
+      <summary>Wie lange müssen wir auf unseren Film warten?</summary>
+      <div class="answer">Euren Trailer und euren fertigen Film bekommt ihr <strong>innerhalb von 8 Wochen</strong> — garantiert und vertraglich zugesichert. Perfekt, um beides mit Familie und Freunden zu teilen, solange die Gänsehaut noch frisch ist.</div>
+    </details>
+    <details class="reveal">
+      <summary>Kommt ihr euch mit unserem Fotografen in die Quere?</summary>
+      <div class="answer">Nein — wir stimmen uns vor eurer Hochzeit direkt mit eurem Fotografen ab und haben mit den meisten Teams der Region schon zusammengearbeitet. Foto und Film greifen bei uns ineinander, statt zu konkurrieren. Euer Fotograf wird uns mögen. Versprochen.</div>
+    </details>
+    <details class="reveal">
+      <summary>Sollen wir jetzt schon anfragen oder reicht das später noch?</summary>
+      <div class="answer">Eine ehrliche Antwort: Wir nehmen nur <strong>12 Hochzeiten pro Jahr</strong> an, und die Samstage von Mai bis September sind meist 12–15 Monate im Voraus vergeben. Die Anfrage ist unverbindlich und kostet euch eine Minute — dann wisst ihr zumindest, ob euer Termin noch frei ist, und könnt in Ruhe entscheiden.</div>
+    </details>
+
+    <div class="section-cta reveal">
+      <span class="cta-line">Alle weiteren Fragen klären wir am liebsten persönlich.</span>
+      <a href="#anfrage" class="btn">Fragt uns direkt — unverbindlich</a>
+      <span class="btn-note">Antwort innerhalb von 24 Stunden · Kein Spam, kein Druck</span>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= FINAL CTA ======================= -->
+<section class="final" id="anfrage">
+  <div class="container">
+    <img src="logo-weddings-frames.svg" class="section-mark reveal" alt="">
+    <span class="eyebrow reveal">Der erste Schritt ist unverbindlich</span>
+    <h2 class="reveal">In 30 Jahren gibt es genau zwei Dinge von diesem Tag: <em>eure Fotos und euren Film.</em></h2>
+    <p class="lead reveal">Fragt jetzt unverbindlich an, ob euer Termin noch frei ist. Kein Verkaufsgespräch, keine Verpflichtung — nur eine ehrliche Antwort innerhalb von 24 Stunden.</p>
+    <div class="scarcity reveal">Saison 2027: Noch 5 von 12 Terminen verfügbar</div>
+
+    <form class="form-card reveal" id="contactForm" onsubmit="return submitForm(event)">
+      <div id="formFields">
+        <label for="names">Eure Namen</label>
+        <input type="text" id="names" name="names" placeholder="z. B. Sarah & Tom" required>
+
+        <label for="date">Euer Hochzeitsdatum</label>
+        <input type="text" id="date" name="date" placeholder="z. B. 12.06.2027 (oder noch offen)" required>
+
+        <label for="location">Eure Location / Region</label>
+        <input type="text" id="location" name="location" placeholder="z. B. Weingut in Rheinhessen">
+
+        <label for="message">Möchtet ihr uns noch etwas erzählen? <span style="text-transform:none;letter-spacing:0;color:rgba(250,247,242,.35)">(optional)</span></label>
+        <textarea id="message" name="message" rows="2" placeholder="Erzählt uns von eurem Tag …"></textarea>
+
+        <button type="submit" class="btn">Jetzt Verfügbarkeit prüfen</button>
+        <span class="btn-note on-dark" style="text-align:center">Unverbindlich & kostenlos · Antwort innerhalb von 24 h · Kein Newsletter, kein Spam</span>
+      </div>
+      <div class="form-success" id="formSuccess">
+        <h3>Danke euch! ❤️</h3>
+        <p>Eure Anfrage ist angekommen. Wir prüfen euren Termin und melden uns innerhalb von 24 Stunden persönlich bei euch.</p>
+      </div>
+    </form>
+
+    <div class="trust-row reveal">
+      <span>120+ Hochzeiten</span>
+      <span>5,0 ★ auf Google</span>
+      <span>Antwort in 24 h</span>
+      <span>Vertraglich gesicherte Lieferzeit</span>
+    </div>
+
+    <p class="reveal" style="margin-top:72px;font-family:var(--script);font-size:clamp(30px,4vw,42px);color:var(--gold);line-height:1.2">Zwei Kirschen. Ein Versprechen. Für immer.</p>
+  </div>
+</section>
+
+<!-- ======================= FOOTER ======================= -->
+<footer>
+  <div class="container">
+    <span class="logo" style="align-items:center;gap:14px">
+      <img src="logo-weddings-frames.svg" style="height:38px;width:auto" alt="">
+      <span class="logo-w" style="color:var(--charcoal)">Weddings</span><span class="logo-by" style="color:var(--text-soft)">by Frames.</span>
+    </span>
+    <div class="foot-links">
+      <a href="#">Instagram</a>
+      <a href="#">Impressum</a>
+      <a href="#">Datenschutz</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Nav on scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Reveal on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Video placeholder — hier später echtes Video (z. B. Vimeo/YouTube-Embed) einsetzen
+function playFilm(el) {
+  alert('Hier wird euer Beispielfilm eingebettet (z. B. Vimeo oder YouTube). Ersetzt den Platzhalter durch euren echten Film — er ist das stärkste Verkaufsargument der Seite.');
+}
+
+// Form — hier später echtes Formular-Backend anbinden (z. B. Formspree, Netlify Forms, eigenes CRM)
+function submitForm(e) {
+  e.preventDefault();
+  document.getElementById('formFields').style.display = 'none';
+  document.getElementById('formSuccess').style.display = 'block';
+  return false;
+}
+</script>
+</body>
+</html>
