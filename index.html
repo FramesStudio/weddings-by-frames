@@ -70,13 +70,13 @@ nav .container{display:flex;justify-content:space-between;align-items:center;gap
 .film-frame .yt-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:filter .4s ease}
 .film-frame:hover .yt-poster{filter:brightness(.85)}
 .film-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:3}
-.film-frame .play-ring,.film-frame .film-caption{position:relative;z-index:2}
+.film-frame .play-ring{position:relative;z-index:2}
 .play-ring{width:88px;height:88px;border-radius:50%;background:rgba(255,255,255,.96);display:flex;align-items:center;justify-content:center;transition:all .4s ease;box-shadow:0 0 0 14px rgba(255,255,255,.14)}
 .play-ring svg path{fill:#AF0000}
 .film-frame:hover .play-ring{transform:scale(1.08);background:#fff}
-.film-frame .film-caption{position:absolute;bottom:18px;left:0;right:0;text-align:center;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.75)}
-.hero-film-title{font-family:var(--serif);font-size:clamp(19px,2.2vw,23px);color:var(--charcoal);margin:0 auto 40px}
+.hero-film-title{font-family:var(--serif);font-size:clamp(19px,2.2vw,23px);color:var(--charcoal);margin:0 auto 8px}
 .hero-film-title em{font-style:italic;color:var(--gold)}
+.film-hint{font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin:0 auto 40px;transition:opacity .4s}
 
 /* ---------- Vertrauensleiste ---------- */
 .proof-strip{background:var(--white);padding:32px 0;border-top:1px solid rgba(36,19,22,.05);border-bottom:1px solid rgba(36,19,22,.05)}
@@ -304,9 +304,9 @@ footer .tagline{margin-bottom:20px}
        data-yt="NOrR7AtH-0M" onclick="playYT(this)" onkeydown="if(event.key==='Enter')playYT(this)">
     <img class="yt-poster" src="https://i.ytimg.com/vi/NOrR7AtH-0M/maxresdefault.jpg" alt="" loading="eager">
     <div class="play-ring"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M8 5.5v13l10-6.5-10-6.5z"/></svg></div>
-    <span class="film-caption">Film ansehen · Ton einschalten</span>
   </div>
   <p class="hero-film-title">Alwina <em>&</em> Ivan · Weddingfilm</p>
+  <p class="film-hint" id="filmHint">Film ansehen · Ton einschalten</p>
 
   <a href="#anfrage" class="btn">Verfügbarkeit für euren Termin prüfen</a>
   <span class="btn-note">Unverbindlich. Persönliche Antwort innerhalb von 24 Stunden.</span>
@@ -824,8 +824,10 @@ function playYT(el) {
   f.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen';
   f.allowFullscreen = true;
   host.appendChild(f);
-  host.querySelectorAll('.play-ring, .mini-play, .film-caption, .yt-poster').forEach(n => n.style.display = 'none');
+  host.querySelectorAll('.play-ring, .mini-play, .yt-poster').forEach(n => n.style.display = 'none');
   el.style.cursor = 'default';
+  const hint = document.getElementById('filmHint');
+  if (hint && el.classList.contains('film-frame')) hint.style.opacity = '0';
 }
 document.querySelectorAll('.yt-poster').forEach(img => {
   img.addEventListener('error', () => {
