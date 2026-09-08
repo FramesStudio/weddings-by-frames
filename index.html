@@ -114,6 +114,14 @@ nav .container{display:flex;justify-content:space-between;align-items:center;gap
   .cmp-table{max-width:520px}
 }
 
+.both-card{max-width:820px;margin:52px auto 0;background:var(--cream);padding:44px 46px;text-align:center;position:relative}
+.both-card .eyebrow{margin-bottom:14px}
+.both-card h3{font-family:var(--serif);font-size:clamp(24px,3vw,31px);color:var(--charcoal);margin-bottom:16px;font-weight:500}
+.both-card p{color:var(--text-soft);max-width:640px;margin:0 auto 14px}
+.both-card p:last-child{margin-bottom:0}
+.both-card .both-note{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--charcoal);padding-top:18px;border-top:1px solid rgba(36,19,22,.1);margin-top:20px}
+@media(max-width:600px){.both-card{padding:34px 24px;margin-top:40px}}
+
 /* Zeitwert */
 .timevalue{background:var(--cream)}
 .tv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(36,19,22,.08);max-width:1000px;margin:44px auto 0}
@@ -186,6 +194,8 @@ nav .container{display:flex;justify-content:space-between;align-items:center;gap
 .price-card .for{font-family:var(--serif);font-style:italic;font-size:17px;line-height:1.5;color:var(--text-soft);margin:14px 0 0}
 .price-card.featured .for{color:rgba(251,247,243,.62)}
 .price-card .price{font-family:var(--serif);font-size:36px;font-weight:500;color:var(--charcoal);line-height:1;margin-top:20px}
+.price-card .price-hint{margin-top:20px;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:500}
+.price-card.featured .price-hint{color:var(--gold-light)}
 .price-card .price small{font-family:var(--sans);font-size:12px;font-weight:300;color:var(--text-soft);letter-spacing:.08em;display:block;margin-top:7px;text-transform:uppercase}
 .price-card.featured .price small{color:rgba(251,247,243,.5)}
 .price-card ul{list-style:none;margin:26px 0 24px;padding-top:22px;border-top:1px solid rgba(36,19,22,.08)}
@@ -298,7 +308,7 @@ footer .tagline{margin-bottom:20px}
   <svg viewBox="0 0 1960 2147" class="brand-mark" role="img" aria-label="Weddings by Frames"><use href="#wbf-logo"/></svg>
   <span class="eyebrow">Hochzeitsfilme mit echtem Ton</span>
   <h1>Während ihr heiratet, passiert hinter euch <em>eure halbe Hochzeit.</em></h1>
-  <p class="sub">Wir begleiten euren Tag unaufdringlich und halten die Stimmen, Reaktionen und Szenen fest, die ihr selbst nicht alle sehen könnt.</p>
+  <p class="sub">Wir begleiten euren Tag unaufdringlich und halten die Stimmen, Reaktionen und Szenen fest, die ihr selbst nicht alle sehen könnt — auf Wunsch in Film und Fotografie.</p>
 
   <div class="film-frame" role="button" tabindex="0" aria-label="Hochzeitsfilm abspielen"
        data-yt="NOrR7AtH-0M" onclick="playYT(this)" onkeydown="if(event.key==='Enter')playYT(this)">
@@ -318,7 +328,7 @@ footer .tagline{margin-bottom:20px}
     <div class="proof-item"><strong>120+</strong><span>Hochzeiten begleitet</span></div>
     <div class="proof-item"><strong><span class="stars">★★★★★</span></strong><span>5,0 auf Google</span></div>
     <div class="proof-item"><strong>8 Wochen</strong><span>vertraglich zugesicherte Lieferung</span></div>
-    <div class="proof-item"><strong>12</strong><span>Hochzeiten pro Jahr</span></div>
+    <div class="proof-item"><strong>24</strong><span>Hochzeiten pro Jahr</span></div>
   </div>
 </div>
 
@@ -367,6 +377,13 @@ footer .tagline{margin-bottom:20px}
 
     <div class="narrow prose reveal" style="text-align:center;margin-top:44px">
       <p>Das Fotoalbum könnt ihr aufschlagen. Im Film hört ihr wieder, wie dein Vater deinen Namen sagt, wie eure Gäste auf den Einzug reagieren und wie ihr nach dem letzten Tanz klingt, wenn die Anspannung langsam nachlässt.</p>
+    </div>
+
+    <div class="both-card reveal">
+      <span class="eyebrow">Beides aus einer Hand</span>
+      <h3>Wir fotografieren auch.</h3>
+      <p>Wenn ihr euch nicht zwischen Foto und Film entscheiden möchtet, müsst ihr das auch nicht. Wir kommen aus der Fotografie und arbeiten seit vielen Jahren professionell mit der Kamera — für Unternehmen, Marken und Hochzeiten. Auf Wunsch übernehmen wir beides an eurem Tag: ein Fotograf und ein Videograf, ein Team, ein gemeinsamer Look.</p>
+      <p class="both-note">Der Vorteil: Foto und Film stehen sich nicht im Weg, sondern stimmen sich ab. Ihr habt einen Ansprechpartner statt zwei — und am Ende eine gemeinsame Bildsprache statt zwei getrennter Produktionen.</p>
     </div>
   </div>
 </section>
@@ -508,7 +525,7 @@ footer .tagline{margin-bottom:20px}
         <span class="eyebrow">Wer hinter der Kamera steht</span>
         <h2>Ihr lasst uns an einen Tag teilhaben, an dem <em>viele Menschen euch wichtig sind.</em> Das behandeln wir auch so.</h2>
         <div class="prose">
-          <p>Wir sind <strong>Nata und Nils</strong> von Weddings by Frames. Wir mögen Hochzeitsfilme, die nicht versuchen, einen perfekten Tag zu erfinden. Uns interessieren die echten Übergänge: die Nervosität vor der Trauung, ein kurzer Blick durch den Raum, ein Satz, der eigentlich nicht geplant war, und die Erleichterung, wenn der letzte große Programmpunkt vorbei ist.</p>
+          <p>Wir sind <strong>Nata und Nils</strong> von Weddings by Frames. Wir arbeiten seit vielen Jahren hauptberuflich mit Kamera und Ton — in der Fotografie ebenso wie im Film. Wir mögen Hochzeitsfilme, die nicht versuchen, einen perfekten Tag zu erfinden. Uns interessieren die echten Übergänge: die Nervosität vor der Trauung, ein kurzer Blick durch den Raum, ein Satz, der eigentlich nicht geplant war, und die Erleichterung, wenn der letzte große Programmpunkt vorbei ist.</p>
           <p>Deshalb nehmen wir nur eine begrenzte Zahl an Hochzeiten pro Jahr an. Vor eurem Termin lernen wir euch, den Ablauf und die wichtigen Menschen kennen. Am Hochzeitstag halten wir uns im Hintergrund und sind zur Stelle, wenn es darauf ankommt.</p>
           <p>Wenn ihr keinen kitschigen Clip sucht, sondern einen Film, den ihr auch in zehn Jahren noch gern anschaut, sollten wir miteinander sprechen.</p>
         </div>
@@ -558,7 +575,7 @@ footer .tagline{margin-bottom:20px}
       <svg viewBox="0 0 1960 2147" class="section-mark" aria-hidden="true"><use href="#wbf-logo"/></svg>
       <span class="eyebrow">Investition</span>
       <h2>Wählt den Umfang, <em>der zu eurem Tag passt.</em></h2>
-      <p>Alle Pakete enthalten Anfahrt, Musiklizenzen, Farbkorrektur und Datensicherung. Der jeweils ausgewiesene Preis ist inklusive Mehrwertsteuer.</p>
+      <p>Alle Pakete enthalten Anfahrt, Musiklizenzen, Farbkorrektur und Datensicherung. Das passende Angebot stellen wir euch nach einem kurzen Gespräch persönlich zusammen — abgestimmt auf euren Ablauf und eure Location.</p>
     </div>
 
     <div class="price-grid">
@@ -566,7 +583,7 @@ footer .tagline{margin-bottom:20px}
         <div class="pc-head">
           <h3>Der Essenz-Film</h3>
           <p class="for">Für Paare, die die wichtigsten Stunden konzentriert festhalten möchten</p>
-          <div class="price">3.200 €<small>inkl. MwSt.</small></div>
+          <div class="price-hint">Preis auf Anfrage</div>
         </div>
         <ul>
           <li>8 Stunden Begleitung, vom Getting Ready bis zum ersten Tanz</li>
@@ -584,7 +601,7 @@ footer .tagline{margin-bottom:20px}
         <div class="pc-head">
           <h3>Der Signature-Film</h3>
           <p class="for">Für Paare, die auch den späteren Abend nicht auslassen möchten</p>
-          <div class="price">ab 4.400 €<small>inkl. MwSt.</small></div>
+          <div class="price-hint">Preis auf Anfrage</div>
         </div>
         <ul>
           <li>12 Stunden Begleitung bis in die Party</li>
@@ -601,7 +618,7 @@ footer .tagline{margin-bottom:20px}
         <div class="pc-head">
           <h3>Das Vermächtnis</h3>
           <p class="for">Für Paare, die den ganzen Tag ausführlich dokumentieren lassen möchten</p>
-          <div class="price">ab 5.900 €<small>inkl. MwSt.</small></div>
+          <div class="price-hint">Preis auf Anfrage</div>
         </div>
         <ul>
           <li>Ganztägige Begleitung ohne festes Stundenlimit</li>
@@ -616,7 +633,7 @@ footer .tagline{margin-bottom:20px}
       </div>
     </div>
 
-    <p class="pricing-note reveal">Ratenzahlung ist möglich. Euer Wunschtermin wird erst mit Vertragsabschluss verbindlich reserviert. Umfang, Lieferzeit und Nutzungsrechte stehen im Vertrag.</p>
+    <p class="pricing-note reveal">Ihr bekommt euer persönliches Angebot innerhalb von 24 Stunden — transparent, mit allen Leistungen und ohne versteckte Kosten. Ratenzahlung ist möglich. Euer Wunschtermin wird erst mit Vertragsabschluss verbindlich reserviert.</p>
   </div>
 </section>
 
@@ -706,6 +723,10 @@ footer .tagline{margin-bottom:20px}
     <details class="reveal">
       <summary>Wir haben schon einen Fotografen. Brauchen wir zusätzlich einen Film?</summary>
       <div class="answer">Der Fotograf und das Filmteam ersetzen sich nicht. Fotos zeigen euch einen präzisen Moment. Film ergänzt Stimme, Bewegung, Musik, Reden und Reaktionen. Wir stimmen uns vorab mit eurem Fotografen ab, damit beide ihre Arbeit gut machen können.</div>
+    </details>
+    <details class="reveal">
+      <summary>Bietet ihr auch Fotografie an?</summary>
+      <div class="answer">Ja. Wir kommen selbst aus der Fotografie und arbeiten seit vielen Jahren professionell damit. Auf Wunsch übernehmen wir Foto und Film an eurem Tag — mit einem Fotografen und einem Videografen vor Ort. Beide stimmen sich vorab ab, sodass sie sich nicht im Weg stehen und ihr am Ende eine gemeinsame Bildsprache bekommt. Sprecht uns einfach an, dann stellen wir euch ein passendes Angebot zusammen.</div>
     </details>
     <details class="reveal">
       <summary>Wir fühlen uns vor Kameras unwohl. Was dann?</summary>
@@ -805,8 +826,9 @@ footer .tagline{margin-bottom:20px}
     <p class="tagline">Hochzeitsfilme mit echtem Ton, diskret begleitet.</p>
     <div class="foot-links">
       <a href="https://www.instagram.com/weddings.by.frames/" target="_blank" rel="noopener">Instagram</a>
-      <a href="#">Impressum</a>
-      <a href="#">Datenschutz</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+      <a href="#" data-cc-open>Cookie-Einstellungen</a>
     </div>
   </div>
 </footer>
@@ -816,6 +838,11 @@ footer .tagline{margin-bottom:20px}
 function playYT(el) {
   const id = el.dataset.yt;
   if (!id || el.dataset.playing) return;
+  if (!window.wbfMediaConsent) {          // ohne Einwilligung kein Ladevorgang
+    const b = el.querySelector('.yt-blocked button');
+    if (b) { b.click(); }
+    return;
+  }
   el.dataset.playing = '1';
   const host = el.classList.contains('film-frame') ? el : el.querySelector('.film-thumb');
   const f = document.createElement('iframe');
@@ -851,5 +878,169 @@ function submitForm(e) {
   return false;
 }
 </script>
+<!-- ============ COOKIE-BANNER / CONSENT ============ -->
+<style>
+.cc-overlay{position:fixed;inset:0;z-index:9000;background:rgba(36,19,22,.45);backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:opacity .35s}
+.cc-overlay.show{opacity:1;pointer-events:auto}
+.cc{position:fixed;left:0;right:0;bottom:0;z-index:9001;display:flex;justify-content:center;padding:18px;transform:translateY(120%);transition:transform .5s cubic-bezier(.2,.8,.3,1)}
+.cc.show{transform:none}
+.cc-box{background:#FBF7F3;max-width:660px;width:100%;padding:34px 36px 30px;box-shadow:0 40px 90px -30px rgba(36,19,22,.55);border-top:3px solid #AF0000}
+@media(max-width:600px){.cc{padding:0}.cc-box{padding:26px 22px 22px}}
+.cc-box .cc-mark{height:34px;width:auto;display:block;margin-bottom:16px}
+.cc-box h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:24px;font-weight:500;color:#241316;margin:0 0 10px;line-height:1.25}
+.cc-box p{font-family:'Jost',sans-serif;font-size:14.5px;line-height:1.65;font-weight:300;color:#77625C;margin:0 0 18px}
+.cc-box p a{color:#AF0000;text-decoration:none;border-bottom:1px solid rgba(175,0,0,.3)}
+.cc-actions{display:flex;gap:10px;flex-wrap:wrap}
+.cc-btn{flex:1 1 190px;font-family:'Jost',sans-serif;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;padding:15px 18px;border:1px solid rgba(36,19,22,.22);background:#fff;color:#241316;cursor:pointer;transition:all .3s;text-align:center}
+.cc-btn:hover{border-color:#AF0000;color:#AF0000}
+.cc-btn.primary{background:#AF0000;border-color:#AF0000;color:#fff}
+.cc-btn.primary:hover{background:#8B0000;border-color:#8B0000;color:#fff}
+.cc-link{display:block;width:100%;margin-top:14px;background:none;border:none;font-family:'Jost',sans-serif;font-size:12.5px;color:#77625C;cursor:pointer;text-decoration:underline;text-underline-offset:3px;padding:4px}
+.cc-link:hover{color:#AF0000}
+.cc-settings{display:none;margin:6px 0 20px;border-top:1px solid rgba(36,19,22,.1)}
+.cc-settings.open{display:block}
+.cc-row{display:flex;gap:14px;align-items:flex-start;padding:16px 0;border-bottom:1px solid rgba(36,19,22,.08)}
+.cc-row:last-child{border-bottom:none}
+.cc-row .cc-txt{flex:1}
+.cc-row h4{font-family:'Jost',sans-serif;font-size:14px;font-weight:500;color:#241316;margin:0 0 4px}
+.cc-row p{font-size:13px;margin:0;line-height:1.55}
+.cc-toggle{position:relative;width:44px;height:24px;flex-shrink:0;margin-top:2px}
+.cc-toggle input{opacity:0;width:0;height:0;position:absolute}
+.cc-slider{position:absolute;inset:0;background:#D6C8C2;border-radius:24px;cursor:pointer;transition:background .3s}
+.cc-slider::before{content:'';position:absolute;width:18px;height:18px;left:3px;top:3px;background:#fff;border-radius:50%;transition:transform .3s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.cc-toggle input:checked + .cc-slider{background:#AF0000}
+.cc-toggle input:checked + .cc-slider::before{transform:translateX(20px)}
+.cc-toggle input:disabled + .cc-slider{background:#AF0000;opacity:.45;cursor:not-allowed}
+.cc-fixed{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#AF0000;font-weight:500;margin-top:6px;display:block}
+/* YouTube-Platzhalter ohne Einwilligung */
+.yt-blocked{position:absolute;inset:0;z-index:4;background:linear-gradient(160deg,#3E2E28,#241316);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:22px;gap:12px}
+.yt-blocked p{font-family:'Jost',sans-serif;font-size:13px;line-height:1.6;color:rgba(251,247,243,.8);max-width:330px;margin:0}
+.yt-blocked button{font-family:'Jost',sans-serif;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;padding:12px 22px;background:#AF0000;color:#fff;border:none;cursor:pointer;transition:background .3s}
+.yt-blocked button:hover{background:#8B0000}
+</style>
+
+<div class="cc-overlay" id="ccOverlay"></div>
+<div class="cc" id="ccBanner" role="dialog" aria-modal="true" aria-labelledby="ccTitle">
+  <div class="cc-box">
+    <svg class="cc-mark" aria-hidden="true"><use href="#wbf-logo"/></svg>
+    <h3 id="ccTitle">Kurz zu Cookies</h3>
+    <p>Diese Seite kommt fast ohne aus. Technisch notwendige Speicherung brauchen wir, damit die Seite
+    funktioniert. Erst wenn ihr ein Video anseht, werden Daten an YouTube übertragen — dafür bitten wir
+    um eure Zustimmung. Mehr dazu in unserer
+    <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+
+    <div class="cc-settings" id="ccSettings">
+      <div class="cc-row">
+        <div class="cc-txt">
+          <h4>Notwendig</h4>
+          <p>Speichert eure Cookie-Entscheidung im Browser. Ohne diese Speicherung müssten wir euch bei
+          jedem Besuch erneut fragen. Es findet keine Auswertung statt.</p>
+          <span class="cc-fixed">Immer aktiv</span>
+        </div>
+        <label class="cc-toggle"><input type="checkbox" checked disabled><span class="cc-slider"></span></label>
+      </div>
+      <div class="cc-row">
+        <div class="cc-txt">
+          <h4>Externe Medien — YouTube</h4>
+          <p>Erlaubt das Abspielen unserer Hochzeitsfilme direkt auf dieser Seite. Beim Start eines Videos
+          werden Daten wie eure IP-Adresse an Google übertragen; YouTube kann Cookies setzen. Ohne
+          Zustimmung zeigen wir statt des Videos einen Hinweis.</p>
+        </div>
+        <label class="cc-toggle"><input type="checkbox" id="ccMedia"><span class="cc-slider"></span></label>
+      </div>
+    </div>
+
+    <div class="cc-actions">
+      <button class="cc-btn" id="ccDeny">Nur notwendige</button>
+      <button class="cc-btn primary" id="ccAccept">Alle akzeptieren</button>
+    </div>
+    <button class="cc-link" id="ccToggleSettings">Einstellungen anpassen</button>
+    <button class="cc-link" id="ccSave" style="display:none">Auswahl speichern</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var KEY = 'wbf-consent-v1';
+  var banner  = document.getElementById('ccBanner');
+  var overlay = document.getElementById('ccOverlay');
+  var settings= document.getElementById('ccSettings');
+  var media   = document.getElementById('ccMedia');
+
+  function read(){
+    try { return JSON.parse(localStorage.getItem(KEY)); } catch(e){ return null; }
+  }
+  function write(mediaOk){
+    try {
+      localStorage.setItem(KEY, JSON.stringify({
+        necessary: true, media: !!mediaOk, ts: new Date().toISOString()
+      }));
+    } catch(e){}
+    apply(!!mediaOk);
+    hide();
+  }
+  function show(){ banner.classList.add('show'); overlay.classList.add('show'); }
+  function hide(){ banner.classList.remove('show'); overlay.classList.remove('show'); }
+
+  // ---- Videos je nach Einwilligung freigeben oder sperren ----
+  function apply(mediaOk){
+    window.wbfMediaConsent = mediaOk;
+    document.querySelectorAll('[data-yt]').forEach(function(el){
+      var host = el.classList.contains('film-frame') ? el : el.querySelector('.film-thumb');
+      if (!host) return;
+      var blocked = host.querySelector('.yt-blocked');
+      if (mediaOk){
+        if (blocked) blocked.remove();
+      } else if (!blocked && !el.dataset.playing){
+        var d = document.createElement('div');
+        d.className = 'yt-blocked';
+        d.innerHTML = '<p>Zum Abspielen erlaubt ihr bitte einmalig externe Medien. '
+                    + 'Dabei werden Daten an YouTube übertragen.</p>'
+                    + '<button type="button">Video laden</button>';
+        d.querySelector('button').addEventListener('click', function(ev){
+          ev.stopPropagation();
+          write(true);                       // Einwilligung fuer externe Medien
+          if (typeof playYT === 'function') playYT(el);
+        });
+        d.addEventListener('click', function(ev){ ev.stopPropagation(); });
+        host.appendChild(d);
+      }
+    });
+  }
+
+  // ---- Buttons ----
+  document.getElementById('ccAccept').addEventListener('click', function(){ write(true); });
+  document.getElementById('ccDeny').addEventListener('click',   function(){ write(false); });
+  document.getElementById('ccSave').addEventListener('click',   function(){ write(media.checked); });
+  document.getElementById('ccToggleSettings').addEventListener('click', function(){
+    var open = settings.classList.toggle('open');
+    this.textContent = open ? 'Einstellungen schließen' : 'Einstellungen anpassen';
+    document.getElementById('ccSave').style.display = open ? 'block' : 'none';
+  });
+
+  // ---- Footer-Link zum nachtraeglichen Aendern ----
+  document.querySelectorAll('[data-cc-open]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      var c = read();
+      media.checked = !!(c && c.media);
+      settings.classList.add('open');
+      document.getElementById('ccToggleSettings').textContent = 'Einstellungen schließen';
+      document.getElementById('ccSave').style.display = 'block';
+      show();
+    });
+  });
+
+  // ---- Start ----
+  var saved = read();
+  if (saved){
+    apply(!!saved.media);
+  } else {
+    apply(false);
+    setTimeout(show, 900);
+  }
+})();
+</script>
+
 </body>
 </html>
