@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Weddings by Frames — Hochzeitsfilme mit echtem Ton</title>
 <meta name="description" content="Wir begleiten euren Hochzeitstag unaufdringlich und halten die Stimmen, Reaktionen und Szenen fest, die ihr selbst nicht alle sehen könnt.">
+<link rel="canonical" href="https://www.weddings-by-frames.de/">
+<meta property="og:url" content="https://www.weddings-by-frames.de/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600;700&family=Pinyon+Script&display=swap" rel="stylesheet">
@@ -270,6 +274,9 @@ details .answer strong{color:var(--charcoal);font-weight:500}
 .form-card .btn{width:100%;background:#AF0000;color:#fff}
 .form-card .btn:hover{background:#8B0000}
 .form-success{display:none;text-align:center;padding:34px 0}
+.form-error{display:none;margin-top:16px;padding:14px 16px;background:#FBEFEF;border-left:3px solid var(--gold);font-size:14.5px;color:var(--text);line-height:1.6}
+.form-error a{color:var(--gold);border-bottom:1px solid rgba(175,0,0,.3)}
+.form-card .btn:disabled{opacity:.55;cursor:wait}
 .form-success h3{color:var(--charcoal);font-size:26px;margin-bottom:14px}
 .form-success p{color:var(--text-soft);font-size:16px}
 .trust-row{margin-top:34px;display:flex;justify-content:center;gap:30px;flex-wrap:wrap;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-soft)}
@@ -784,6 +791,8 @@ footer .tagline{margin-bottom:20px}
 
     <form class="form-card reveal" id="contactForm" onsubmit="return submitForm(event)">
       <div id="formFields">
+        <!-- Spamschutz: unsichtbares Feld, das nur Bots ausfuellen -->
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
         <label for="names">Eure Namen</label>
         <input type="text" id="names" name="names" placeholder="z. B. Sarah & Tom" required>
 
@@ -805,6 +814,7 @@ footer .tagline{margin-bottom:20px}
         <button type="submit" class="btn">Verfügbarkeit unverbindlich prüfen</button>
         <span class="btn-note" style="text-align:center">Kostenlos · keine Reservierung ohne Vertrag · persönliche Antwort innerhalb von 24 Stunden · kein Newsletter</span>
       </div>
+      <p class="form-error" id="formError" style="display:none">Das hat leider nicht geklappt. Schreibt uns gerne direkt an <a href="mailto:info@frames-studio.de">info@frames-studio.de</a> oder ruft an: <a href="tel:+4915157312699">+49 151 57312699</a>.</p>
       <div class="form-success" id="formSuccess">
         <h3>Danke, eure Anfrage ist angekommen.</h3>
         <p>Wir prüfen euren Termin und melden uns innerhalb von 24 Stunden persönlich bei euch. Wenn ihr mögt, schreibt uns in der Zwischenzeit, was euch an eurem Hochzeitstag besonders wichtig ist.</p>
@@ -870,11 +880,39 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// Formular — hier später echtes Backend anbinden (z. B. Formspree, Netlify Forms)
+// Formular: Versand an info@frames-studio.de (FormSubmit, ohne Seitenwechsel)
 function submitForm(e) {
   e.preventDefault();
-  document.getElementById('formFields').style.display = 'none';
-  document.getElementById('formSuccess').style.display = 'block';
+  const form  = e.target;
+  const btn   = form.querySelector('button[type="submit"]');
+  const err   = document.getElementById('formError');
+  const label = btn ? btn.textContent : '';
+
+  if (form.querySelector('[name="_honey"]').value) return false;   // Bot erkannt
+
+  if (btn) { btn.disabled = true; btn.textContent = 'Wird gesendet …'; }
+  err.style.display = 'none';
+
+  const data = new FormData(form);
+  data.append('_subject', 'Neue Anfrage über weddings-by-frames.de');
+  data.append('_template', 'table');
+  data.append('_captcha', 'false');
+
+  fetch('https://formsubmit.co/ajax/info@frames-studio.de', {
+    method: 'POST',
+    headers: { 'Accept': 'application/json' },
+    body: data
+  })
+  .then(r => r.json())
+  .then(() => {
+    document.getElementById('formFields').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  })
+  .catch(() => {
+    err.style.display = 'block';
+    if (btn) { btn.disabled = false; btn.textContent = label; }
+  });
+
   return false;
 }
 </script>
