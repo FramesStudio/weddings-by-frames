@@ -794,22 +794,22 @@ footer .tagline{margin-bottom:20px}
         <!-- Spamschutz: unsichtbares Feld, das nur Bots ausfuellen -->
         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
         <label for="names">Eure Namen</label>
-        <input type="text" id="names" name="names" placeholder="z. B. Sarah & Tom" required>
+        <input type="text" id="names" name="Namen" placeholder="z. B. Sarah & Tom" required>
 
         <label for="email">E-Mail-Adresse</label>
         <input type="email" id="email" name="email" placeholder="z. B. sarah.tom@mail.de" required>
 
         <label for="phone">Mobilfunknummer</label>
-        <input type="tel" id="phone" name="phone" placeholder="z. B. 0151 12345678" required>
+        <input type="tel" id="phone" name="Telefon" placeholder="z. B. 0151 12345678" required>
 
         <label for="date">Hochzeitsdatum</label>
-        <input type="text" id="date" name="date" placeholder="z. B. 12.06.2027 (oder noch offen)" required>
+        <input type="text" id="date" name="Hochzeitsdatum" placeholder="z. B. 12.06.2027 (oder noch offen)" required>
 
         <label for="location">Location oder Region</label>
-        <input type="text" id="location" name="location" placeholder="z. B. Weingut in Rheinhessen">
+        <input type="text" id="location" name="Location" placeholder="z. B. Weingut in Rheinhessen">
 
         <label for="message">Möchtet ihr uns schon etwas über euren Tag erzählen? <span style="text-transform:none;letter-spacing:0;color:rgba(64,51,47,.4)">(optional)</span></label>
-        <textarea id="message" name="message" rows="2" placeholder="Erzählt uns von eurem Tag …"></textarea>
+        <textarea id="message" name="Nachricht" rows="2" placeholder="Erzählt uns von eurem Tag …"></textarea>
 
         <button type="submit" class="btn">Verfügbarkeit unverbindlich prüfen</button>
         <span class="btn-note" style="text-align:center">Kostenlos · keine Reservierung ohne Vertrag · persönliche Antwort innerhalb von 24 Stunden · kein Newsletter</span>
@@ -880,7 +880,7 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// Formular: Versand an info@frames-studio.de (FormSubmit, ohne Seitenwechsel)
+// Formular: Versand über Formspree an info@frames-studio.de
 function submitForm(e) {
   e.preventDefault();
   const form  = e.target;
@@ -895,20 +895,30 @@ function submitForm(e) {
 
   const data = new FormData(form);
   data.append('_subject', 'Neue Anfrage über weddings-by-frames.de');
-  data.append('_template', 'table');
-  data.append('_captcha', 'false');
 
-  fetch('https://formsubmit.co/ajax/info@frames-studio.de', {
+  fetch('https://formspree.io/f/xrpgoqej', {
     method: 'POST',
     headers: { 'Accept': 'application/json' },
     body: data
   })
-  .then(r => r.json())
-  .then(() => {
-    document.getElementById('formFields').style.display = 'none';
-    document.getElementById('formSuccess').style.display = 'block';
+  .then(function(r){
+    if (r.ok) {
+      document.getElementById('formFields').style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    } else {
+      return r.json().then(function(res){
+        var msg = (res && res.errors && res.errors.length)
+                  ? res.errors.map(function(x){ return x.message; }).join(' · ')
+                  : 'Bitte versucht es später noch einmal.';
+        throw new Error(msg);
+      });
+    }
   })
-  .catch(() => {
+  .catch(function(ex){
+    err.innerHTML = 'Das hat leider nicht geklappt' +
+      (ex && ex.message ? ' (' + ex.message + ')' : '') +
+      '. Schreibt uns gerne direkt an <a href="mailto:info@frames-studio.de">info@frames-studio.de</a> ' +
+      'oder ruft an: <a href="tel:+4915157312699">+49 151 57312699</a>.';
     err.style.display = 'block';
     if (btn) { btn.disabled = false; btn.textContent = label; }
   });
