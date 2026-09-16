@@ -96,19 +96,19 @@ section{padding:100px 0}
 
 /* Hochformat-Rahmen mit weichem Uebergang in die Seite */
 .short-frame{position:relative;aspect-ratio:9/16;width:100%;max-width:362px;max-height:624px;
-  margin:0 0 0 auto;background:#1B1310;cursor:pointer;overflow:hidden;
+  margin:0 0 0 auto;background:transparent;cursor:pointer;overflow:hidden;
   display:flex;align-items:center;justify-content:center;
-  -webkit-mask-image:radial-gradient(128% 94% at 80% 44%,#000 44%,rgba(0,0,0,.72) 66%,rgba(0,0,0,.28) 82%,transparent 95%);
-  mask-image:radial-gradient(128% 94% at 80% 44%,#000 44%,rgba(0,0,0,.72) 66%,rgba(0,0,0,.28) 82%,transparent 95%)}
+  -webkit-mask-image:radial-gradient(112% 82% at 76% 46%,#000 30%,rgba(0,0,0,.92) 50%,rgba(0,0,0,.55) 68%,rgba(0,0,0,.18) 84%,transparent 100%);
+  mask-image:radial-gradient(112% 82% at 76% 46%,#000 30%,rgba(0,0,0,.92) 50%,rgba(0,0,0,.55) 68%,rgba(0,0,0,.18) 84%,transparent 100%)}
 @media(max-width:980px){.short-frame{margin:0 auto;max-width:320px;
-  -webkit-mask-image:radial-gradient(120% 108% at 50% 46%,#000 52%,rgba(0,0,0,.7) 74%,rgba(0,0,0,.25) 88%,transparent 99%);
-  mask-image:radial-gradient(120% 108% at 50% 46%,#000 52%,rgba(0,0,0,.7) 74%,rgba(0,0,0,.25) 88%,transparent 99%)}}
+  -webkit-mask-image:radial-gradient(106% 92% at 50% 47%,#000 36%,rgba(0,0,0,.9) 56%,rgba(0,0,0,.5) 74%,rgba(0,0,0,.15) 88%,transparent 100%);
+  mask-image:radial-gradient(106% 92% at 50% 47%,#000 36%,rgba(0,0,0,.9) 56%,rgba(0,0,0,.5) 74%,rgba(0,0,0,.15) 88%,transparent 100%)}}
 .short-frame .yt-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:filter .4s ease}
 .short-frame:hover .yt-poster{filter:brightness(.84)}
 .short-frame .play-ring{position:relative;z-index:2;width:74px;height:74px;box-shadow:0 0 0 12px rgba(255,255,255,.13)}
 .short-frame:hover .play-ring{transform:scale(1.06)}
 .short-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:3}
-.short-frame[data-playing]{-webkit-mask-image:none;mask-image:none;box-shadow:0 40px 82px -38px rgba(36,19,22,.5)}
+.short-frame[data-playing]{-webkit-mask-image:none;mask-image:none;background:#1B1310;border-radius:4px;box-shadow:0 34px 74px -36px rgba(36,19,22,.44)}
 .short-hint{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);text-align:center;margin-top:-6px}
 @media(max-width:980px){.short-hint{margin-top:10px}}
 
@@ -119,32 +119,22 @@ section{padding:100px 0}
 /* ---------- Hochformat-Kachel in der Filme-Sektion ---------- */
 .short-row{display:grid;grid-template-columns:286px 1fr;gap:46px;align-items:center;max-width:800px;margin:58px auto 0;padding-top:48px;border-top:1px solid rgba(36,19,22,.12)}
 @media(max-width:760px){.short-row{grid-template-columns:1fr;max-width:330px;gap:26px;text-align:center;margin-top:46px;padding-top:40px}}
-.film-thumb.short-thumb{aspect-ratio:9/16;margin-bottom:0}
+.film-thumb.short-thumb{aspect-ratio:9/16;margin-bottom:0;background:transparent;border-radius:0;box-shadow:none;
+  -webkit-mask-image:radial-gradient(108% 86% at 50% 46%,#000 34%,rgba(0,0,0,.9) 55%,rgba(0,0,0,.5) 73%,rgba(0,0,0,.15) 88%,transparent 100%);
+  mask-image:radial-gradient(108% 86% at 50% 46%,#000 34%,rgba(0,0,0,.9) 55%,rgba(0,0,0,.5) 73%,rgba(0,0,0,.15) 88%,transparent 100%)}
+.short-card[data-playing] .film-thumb.short-thumb{-webkit-mask-image:none;mask-image:none;background:#1B1310;border-radius:4px}
+.short-card .film-thumb::after{display:none}
+.short-card:hover{transform:none}
+.short-card:hover .film-thumb .yt-poster{transform:scale(1.02)}
 .short-copy h3{font-family:var(--serif);font-size:clamp(23px,2.6vw,30px);font-weight:500;color:var(--charcoal);line-height:1.2;margin-bottom:13px}
 .short-copy h3 em{font-style:italic;color:var(--gold)}
 .short-copy p{color:var(--text-soft);font-size:15.5px;line-height:1.7}
 .short-copy .eyebrow{margin-bottom:14px}
 
-/* ---------- Regionen ---------- */
-.regions{background:var(--cream)}
-.region-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(36,19,22,.1);margin-top:48px;border:1px solid rgba(36,19,22,.1)}
-@media(max-width:860px){.region-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:520px){.region-grid{grid-template-columns:1fr}}
-.region-card{background:var(--ivory);padding:30px 28px;transition:background .35s,transform .35s;display:block}
-.region-card:hover{background:var(--white);transform:translateY(-2px)}
-.region-card h3{font-size:23px;margin-bottom:8px}
-.region-card h3 span{color:var(--gold)}
-.region-card p{font-size:14.5px;color:var(--text-soft);line-height:1.6;margin-bottom:14px}
-.region-card .more{font-family:var(--sans);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:500}
-.region-note{margin-top:34px;text-align:center;font-size:15px;color:var(--text-soft);font-family:var(--serif);font-style:italic;font-size:19px}
 /* ---------- Footer NAP ---------- */
 .foot-nap{margin:26px auto 22px;font-size:13.5px;line-height:1.85;color:var(--text-soft);max-width:640px}
 .foot-nap a{color:var(--text-soft);border-bottom:1px solid rgba(119,98,92,.3)}
 .foot-nap a:hover{color:var(--gold);border-color:var(--gold)}
-.foot-regions{margin:0 auto 24px;max-width:760px;font-size:13px;line-height:2;color:var(--text-soft)}
-.foot-regions a{color:var(--text-soft);border-bottom:1px solid rgba(119,98,92,.25);padding-bottom:1px}
-.foot-regions a:hover{color:var(--gold);border-color:var(--gold)}
-.foot-regions .lbl{display:block;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;font-weight:500}
 
 /* ---------- Nav ---------- */
 #nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 0;transition:all .4s ease}
@@ -169,7 +159,7 @@ section{padding:100px 0}
 .hero .sub{color:var(--text-soft);max-width:640px;margin:0 auto 40px;font-size:clamp(16.5px,1.9vw,19px)}
 .hero .sub-local{font-size:clamp(14.5px,1.5vw,16px);margin-top:-24px;margin-bottom:38px;opacity:.9}
 .hero .sub-local strong{font-weight:500;color:var(--text)}
-.film-frame{position:relative;max-width:780px;margin:0 auto 20px;aspect-ratio:16/9;background:#1B1310;border:6px solid var(--white);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:box-shadow .4s;box-shadow:0 40px 90px -35px rgba(36,19,22,.45);overflow:hidden}
+.film-frame{position:relative;max-width:780px;margin:0 auto 20px;aspect-ratio:16/9;background:#1B1310;border:none;border-radius:4px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:box-shadow .4s;box-shadow:0 34px 76px -34px rgba(36,19,22,.38);overflow:hidden}
 .film-frame:hover{box-shadow:0 46px 100px -35px rgba(36,19,22,.55)}
 .film-frame .yt-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:filter .4s ease}
 .film-frame:hover .yt-poster{filter:brightness(.85)}
@@ -240,7 +230,7 @@ section{padding:100px 0}
 @media(max-width:900px){.films-grid{grid-template-columns:1fr;max-width:460px}}
 .film-card{cursor:pointer;transition:transform .4s ease}
 .film-card:hover{transform:translateY(-6px)}
-.film-thumb{aspect-ratio:16/9;position:relative;display:flex;align-items:center;justify-content:center;margin-bottom:18px;overflow:hidden;background:#1B1310;box-shadow:0 24px 55px -30px rgba(36,19,22,.35)}
+.film-thumb{aspect-ratio:16/9;position:relative;display:flex;align-items:center;justify-content:center;margin-bottom:18px;overflow:hidden;border-radius:3px;background:#1B1310;box-shadow:0 22px 48px -28px rgba(36,19,22,.32)}
 .film-thumb .yt-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease,filter .4s ease}
 .film-card:hover .film-thumb .yt-poster{transform:scale(1.045);filter:brightness(.82)}
 .film-thumb iframe{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:3}
@@ -405,7 +395,7 @@ footer .tagline{margin-bottom:20px}
    "name": "Weddings by Frames",
    "legalName": "Frames GmbH",
    "alternateName": "Weddings by Frames — Hochzeitsfilm und Hochzeitsfotografie",
-   "description": "Weddings by Frames ist eine Hochzeitsvideografie und Hochzeitsfotografie aus Lohne im Landkreis Vechta. Wir begleiten Hochzeiten dokumentarisch mit Originalton und liefern den fertigen Film vertraglich zugesichert innerhalb von acht Wochen. Auf Wunsch übernehmen wir Foto und Film aus einer Hand. Wir arbeiten in Oldenburg, Osnabrück, Bremen, Cloppenburg, Vechta und im gesamten Nordwesten Deutschlands.",
+   "description": "Weddings by Frames ist eine Hochzeitsvideografie und Hochzeitsfotografie aus Lohne (Oldenburg) im Landkreis Vechta. Wir begleiten Hochzeiten dokumentarisch mit Originalton und liefern den fertigen Film vertraglich zugesichert innerhalb von acht Wochen. Auf Wunsch übernehmen wir Foto und Film aus einer Hand. Wir arbeiten in Vechta, Lohne, Cloppenburg, Oldenburg, Osnabrück, Bremen, Damme, Dinklage, Diepholz, Delmenhorst und im gesamten Nordwesten Deutschlands; auf Anfrage europaweit.",
    "url": "https://www.weddings-by-frames.de/",
    "slogan": "Hochzeitsfilme mit echtem Ton",
    "telephone": "+49-151-57312699",
@@ -523,6 +513,90 @@ footer .tagline{margin-bottom:20px}
     {
      "@type": "City",
      "name": "Barnstorf"
+    },
+    {
+     "@type": "City",
+     "name": "Rastede"
+    },
+    {
+     "@type": "City",
+     "name": "Wardenburg"
+    },
+    {
+     "@type": "City",
+     "name": "Westerstede"
+    },
+    {
+     "@type": "City",
+     "name": "Ganderkesee"
+    },
+    {
+     "@type": "City",
+     "name": "Syke"
+    },
+    {
+     "@type": "City",
+     "name": "Bassum"
+    },
+    {
+     "@type": "City",
+     "name": "Georgsmarienhütte"
+    },
+    {
+     "@type": "City",
+     "name": "Bad Iburg"
+    },
+    {
+     "@type": "City",
+     "name": "Löningen"
+    },
+    {
+     "@type": "City",
+     "name": "Garrel"
+    },
+    {
+     "@type": "City",
+     "name": "Visbek"
+    },
+    {
+     "@type": "City",
+     "name": "Goldenstedt"
+    },
+    {
+     "@type": "AdministrativeArea",
+     "name": "Landkreis Vechta"
+    },
+    {
+     "@type": "AdministrativeArea",
+     "name": "Landkreis Cloppenburg"
+    },
+    {
+     "@type": "AdministrativeArea",
+     "name": "Landkreis Oldenburg"
+    },
+    {
+     "@type": "AdministrativeArea",
+     "name": "Landkreis Diepholz"
+    },
+    {
+     "@type": "AdministrativeArea",
+     "name": "Landkreis Osnabrück"
+    },
+    {
+     "@type": "AdministrativeArea",
+     "name": "Oldenburger Münsterland"
+    },
+    {
+     "@type": "AdministrativeArea",
+     "name": "Region Bremen"
+    },
+    {
+     "@type": "AdministrativeArea",
+     "name": "Nordwestdeutschland"
+    },
+    {
+     "@type": "AdministrativeArea",
+     "name": "Niedersachsen"
     }
    ],
    "serviceArea": {
@@ -544,7 +618,13 @@ footer .tagline{margin-bottom:20px}
     "Freie Trauung",
     "Standesamtliche Trauung",
     "Originalton-Aufnahme bei Hochzeiten",
-    "Dokumentarische Hochzeitsbegleitung"
+    "Dokumentarische Hochzeitsbegleitung",
+    "Brautmodenshooting",
+    "Hochzeitsvideograf Oldenburg",
+    "Hochzeitsvideograf Osnabrück",
+    "Hochzeitsvideograf Bremen",
+    "Hochzeitsvideograf Vechta",
+    "Hochzeitsfotograf Oldenburger Münsterland"
    ],
    "sameAs": [
     "https://www.instagram.com/weddings.by.frames/",
@@ -577,6 +657,15 @@ footer .tagline{margin-bottom:20px}
        "serviceType": "Hochzeitsvideografie",
        "provider": {
         "@id": "https://www.weddings-by-frames.de/#business"
+       },
+       "areaServed": {
+        "@type": "GeoCircle",
+        "geoMidpoint": {
+         "@type": "GeoCoordinates",
+         "latitude": 52.6667,
+         "longitude": 8.2333
+        },
+        "geoRadius": "100000"
        }
       }
      },
@@ -589,6 +678,15 @@ footer .tagline{margin-bottom:20px}
        "serviceType": "Hochzeitsfotografie",
        "provider": {
         "@id": "https://www.weddings-by-frames.de/#business"
+       },
+       "areaServed": {
+        "@type": "GeoCircle",
+        "geoMidpoint": {
+         "@type": "GeoCoordinates",
+         "latitude": 52.6667,
+         "longitude": 8.2333
+        },
+        "geoRadius": "100000"
        }
       }
      },
@@ -601,6 +699,15 @@ footer .tagline{margin-bottom:20px}
        "serviceType": "Hochzeitsreportage",
        "provider": {
         "@id": "https://www.weddings-by-frames.de/#business"
+       },
+       "areaServed": {
+        "@type": "GeoCircle",
+        "geoMidpoint": {
+         "@type": "GeoCoordinates",
+         "latitude": 52.6667,
+         "longitude": 8.2333
+        },
+        "geoRadius": "100000"
        }
       }
      },
@@ -613,6 +720,15 @@ footer .tagline{margin-bottom:20px}
        "serviceType": "Hochzeitsvideografie",
        "provider": {
         "@id": "https://www.weddings-by-frames.de/#business"
+       },
+       "areaServed": {
+        "@type": "GeoCircle",
+        "geoMidpoint": {
+         "@type": "GeoCoordinates",
+         "latitude": 52.6667,
+         "longitude": 8.2333
+        },
+        "geoRadius": "100000"
        }
       }
      }
@@ -891,7 +1007,7 @@ footer .tagline{margin-bottom:20px}
       </div>
       <h1>Während ihr heiratet, passiert hinter euch <em>eure halbe Hochzeit.</em></h1>
       <p class="sub">Wir begleiten euren Tag unaufdringlich und halten die Stimmen, Reaktionen und Szenen fest, die ihr selbst nicht alle sehen könnt — auf Wunsch in Film und Fotografie.</p>
-      <p class="sub sub-local">Als <strong>Hochzeitsvideograf und Hochzeitsfotograf</strong> arbeiten wir von Lohne im Landkreis Vechta aus — für Paare in <strong>Oldenburg, Osnabrück, Bremen, Cloppenburg</strong> und im gesamten Nordwesten.</p>
+      <p class="sub sub-local">Als <strong>Hochzeitsvideograf und Hochzeitsfotograf</strong> begleiten wir Paare im gesamten Nordwesten — auf Anfrage auch darüber hinaus.</p>
       <a href="#anfrage" class="btn">Verfügbarkeit für euren Termin prüfen</a>
       <span class="btn-note">Unverbindlich. Persönliche Antwort innerhalb von 24 Stunden.</span>
     </div>
@@ -1333,57 +1449,6 @@ footer .tagline{margin-bottom:20px}
   </div>
 </section>
 
-<!-- ============ 13b REGIONEN ============ -->
-<section class="regions" id="regionen">
-  <div class="container">
-    <div class="sec-head reveal" style="text-align:center">
-      <svg viewBox="0 0 1960 2147" class="section-mark" aria-hidden="true"><use href="#wbf-logo"/></svg>
-      <span class="eyebrow">Wo wir filmen</span>
-      <h2>Wir kennen die Orte, an denen ihr <em>heiratet.</em></h2>
-      <p class="lead" style="max-width:720px;margin:22px auto 0">Unser Studio steht in Lohne im Landkreis Vechta. Von dort erreichen wir die meisten Trauorte im Nordwesten in unter einer Stunde. Das heißt für euch: Wir sind früh da, wir wissen, wie das Licht im Trauraum um vier Uhr nachmittags steht, und wir müssen uns nicht erst orientieren.</p>
-    </div>
-
-    <div class="region-grid reveal">
-      <a class="region-card" href="hochzeitsvideograf-oldenburg.html">
-        <h3>Hochzeitsfilm <span>Oldenburg</span></h3>
-        <p>Schloss, Hofgärtnerhaus, Teepavillon im Schlossgarten und Alter Landtag — die Trauorte der Stadt und was sie für den Film bedeuten.</p>
-        <span class="more">Mehr zu Oldenburg</span>
-      </a>
-      <a class="region-card" href="hochzeitsvideograf-osnabrueck.html">
-        <h3>Hochzeitsfilm <span>Osnabrück</span></h3>
-        <p>Schloss Osnabrück, Gut Honeburg, Regenwaldhaus im Botanischen Garten und das Akzisehaus — Trauorte mit sehr unterschiedlichem Licht.</p>
-        <span class="more">Mehr zu Osnabrück</span>
-      </a>
-      <a class="region-card" href="hochzeitsvideograf-bremen.html">
-        <h3>Hochzeitsfilm <span>Bremen</span></h3>
-        <p>Das Rathaus als UNESCO-Welterbe, Schloss Schönebeck in Vegesack und weitere Trauorte — mit den Besonderheiten für Ton und Bild.</p>
-        <span class="more">Mehr zu Bremen</span>
-      </a>
-      <a class="region-card" href="hochzeitsvideograf-vechta.html">
-        <h3>Hochzeitsfilm <span>Vechta</span></h3>
-        <p>Unsere Heimatregion: Rathaus Vechta, Hof Scherbring, Gut Altona und die Höfe im Oldenburger Münsterland.</p>
-        <span class="more">Mehr zu Vechta</span>
-      </a>
-      <a class="region-card" href="hochzeitsvideograf-cloppenburg.html">
-        <h3>Hochzeitsfilm <span>Cloppenburg</span></h3>
-        <p>Burg Arkenstede im Museumsdorf und die Scheunenhochzeiten im Landkreis — Orte mit viel Holz, wenig Licht und starkem Charakter.</p>
-        <span class="more">Mehr zu Cloppenburg</span>
-      </a>
-      <a class="region-card" href="hochzeitsfotograf-lohne.html">
-        <h3>Foto &amp; Film <span>Lohne</span></h3>
-        <p>Direkt vor unserer Haustür. Standesamt Lohne, Damme, Dinklage und Steinfeld — kurze Wege, volle Aufmerksamkeit für euren Tag.</p>
-        <span class="more">Mehr zu Lohne</span>
-      </a>
-    </div>
-
-    <p class="region-note reveal">Euer Ort ist nicht dabei? Wir begleiten Hochzeiten im gesamten Nordwesten und auf Anfrage europaweit.</p>
-
-    <div class="section-cta reveal">
-      <a href="#anfrage" class="btn">Verfügbarkeit für euren Ort prüfen</a>
-    </div>
-  </div>
-</section>
-
 <!-- ============ 14 FAQ ============ -->
 <section class="faq" id="faq">
   <div class="container">
@@ -1508,15 +1573,6 @@ footer .tagline{margin-bottom:20px}
       Hochzeitsvideograf und Hochzeitsfotograf für den Nordwesten
     </address>
 
-    <nav class="foot-regions" aria-label="Regionen">
-      <span class="lbl">Wo wir filmen</span>
-      <a href="hochzeitsvideograf-oldenburg.html">Hochzeitsvideograf Oldenburg</a> ·
-      <a href="hochzeitsvideograf-osnabrueck.html">Osnabrück</a> ·
-      <a href="hochzeitsvideograf-bremen.html">Bremen</a> ·
-      <a href="hochzeitsvideograf-vechta.html">Vechta</a> ·
-      <a href="hochzeitsvideograf-cloppenburg.html">Cloppenburg</a> ·
-      <a href="hochzeitsfotograf-lohne.html">Lohne</a>
-    </nav>
 
     <div class="foot-links">
       <a href="https://www.instagram.com/weddings.by.frames/" target="_blank" rel="noopener">Instagram</a>
