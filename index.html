@@ -108,7 +108,14 @@ section{padding:100px 0}
 .short-frame .play-ring{position:relative;z-index:2;width:74px;height:74px;box-shadow:0 0 0 12px rgba(255,255,255,.13)}
 .short-frame:hover .play-ring{transform:scale(1.06)}
 .short-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:3}
-.short-frame[data-playing]{-webkit-mask-image:none;mask-image:none;background:#1B1310;border-radius:4px;box-shadow:0 34px 74px -36px rgba(36,19,22,.44)}
+/* Rahmen an allen Video-Einbettungen sicher ausschalten */
+iframe{border:0!important;outline:0!important;display:block}
+.film-frame,.film-thumb,.short-frame,.film-card{border:0!important}
+/* Nach Mausklick keinen Fokusring zeichnen — der wirkte wie ein Rahmen ums Video.
+   Bei Tastaturbedienung bleibt er sichtbar (Barrierefreiheit). */
+.film-frame:focus,.short-frame:focus,.film-card:focus,.film-thumb:focus{outline:none}
+.film-frame:focus-visible,.short-frame:focus-visible,.film-card:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+.short-frame[data-playing]{-webkit-mask-image:none;mask-image:none;background:transparent;border-radius:0;box-shadow:none}
 .short-hint{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);text-align:center;margin-top:-6px}
 @media(max-width:980px){.short-hint{margin-top:10px}}
 
@@ -122,7 +129,7 @@ section{padding:100px 0}
 .film-thumb.short-thumb{aspect-ratio:9/16;margin-bottom:0;background:transparent;border-radius:0;box-shadow:none;
   -webkit-mask-image:radial-gradient(108% 86% at 50% 46%,#000 34%,rgba(0,0,0,.9) 55%,rgba(0,0,0,.5) 73%,rgba(0,0,0,.15) 88%,transparent 100%);
   mask-image:radial-gradient(108% 86% at 50% 46%,#000 34%,rgba(0,0,0,.9) 55%,rgba(0,0,0,.5) 73%,rgba(0,0,0,.15) 88%,transparent 100%)}
-.short-card[data-playing] .film-thumb.short-thumb{-webkit-mask-image:none;mask-image:none;background:#1B1310;border-radius:4px}
+.short-card[data-playing] .film-thumb.short-thumb{-webkit-mask-image:none;mask-image:none;background:transparent;border-radius:0;box-shadow:none}
 .short-card .film-thumb::after{display:none}
 .short-card:hover{transform:none}
 .short-card:hover .film-thumb .yt-poster{transform:scale(1.02)}
@@ -159,7 +166,7 @@ section{padding:100px 0}
 .hero .sub{color:var(--text-soft);max-width:640px;margin:0 auto 40px;font-size:clamp(16.5px,1.9vw,19px)}
 .hero .sub-local{font-size:clamp(14.5px,1.5vw,16px);margin-top:-24px;margin-bottom:38px;opacity:.9}
 .hero .sub-local strong{font-weight:500;color:var(--text)}
-.film-frame{position:relative;max-width:780px;margin:0 auto 20px;aspect-ratio:16/9;background:#1B1310;border:none;border-radius:4px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:box-shadow .4s;box-shadow:0 34px 76px -34px rgba(36,19,22,.38);overflow:hidden}
+.film-frame{position:relative;max-width:780px;margin:0 auto 20px;aspect-ratio:16/9;background:#1B1310;border:none;border-radius:0;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:box-shadow .4s;box-shadow:0 34px 76px -34px rgba(36,19,22,.38);overflow:hidden}
 .film-frame:hover{box-shadow:0 46px 100px -35px rgba(36,19,22,.55)}
 .film-frame .yt-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:filter .4s ease}
 .film-frame:hover .yt-poster{filter:brightness(.85)}
@@ -226,16 +233,17 @@ section{padding:100px 0}
 
 /* Filme */
 .films{background:var(--ivory)}
-.films-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:960px;margin:0 auto}
+.films-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;max-width:880px;margin:0 auto}
 @media(max-width:900px){.films-grid{grid-template-columns:1fr;max-width:460px}}
 .film-card{cursor:pointer;transition:transform .4s ease}
 .film-card:hover{transform:translateY(-6px)}
-.film-thumb{aspect-ratio:16/9;position:relative;display:flex;align-items:center;justify-content:center;margin-bottom:18px;overflow:hidden;border-radius:3px;background:#1B1310;box-shadow:0 22px 48px -28px rgba(36,19,22,.32)}
+.film-thumb{aspect-ratio:16/9;position:relative;display:flex;align-items:center;justify-content:center;margin-bottom:18px;overflow:hidden;border-radius:0;background:#1B1310;box-shadow:0 22px 48px -28px rgba(36,19,22,.32)}
 .film-thumb .yt-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease,filter .4s ease}
 .film-card:hover .film-thumb .yt-poster{transform:scale(1.045);filter:brightness(.82)}
 .film-thumb iframe{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:3}
 .film-thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(27,19,16,.45),rgba(27,19,16,.06) 58%);z-index:1;pointer-events:none;transition:opacity .4s}
 .film-card:hover .film-thumb::after{opacity:.72}
+[data-playing] .film-thumb::after,.film-thumb:has(iframe)::after{display:none}
 .film-thumb .mini-play{position:relative;z-index:2;width:58px;height:58px;border-radius:50%;border:1px solid rgba(255,255,255,.75);display:flex;align-items:center;justify-content:center;transition:all .35s}
 .film-card:hover .mini-play{background:#fff;border-color:#fff}
 .film-card:hover .mini-play svg path{fill:#AF0000}
@@ -761,6 +769,26 @@ footer .tagline{margin-bottom:20px}
   },
   {
    "@type": "VideoObject",
+   "@id": "https://www.weddings-by-frames.de/#video-_T5iIYwMrwE",
+   "name": "WEDDINGFILM Lisa & Nico",
+   "description": "Vollständiger Hochzeitsfilm von Lisa und Nico. Dokumentarisch begleitet von Weddings by Frames, mit Originalton von Trauung, Reden und Feier.",
+   "thumbnailUrl": [
+    "https://i.ytimg.com/vi/_T5iIYwMrwE/maxresdefault.jpg",
+    "https://i.ytimg.com/vi/_T5iIYwMrwE/hqdefault.jpg"
+   ],
+   "embedUrl": "https://www.youtube-nocookie.com/embed/_T5iIYwMrwE",
+   "contentUrl": "https://www.youtube.com/watch?v=_T5iIYwMrwE",
+   "inLanguage": "de-DE",
+   "isFamilyFriendly": true,
+   "publisher": {
+    "@id": "https://www.weddings-by-frames.de/#business"
+   },
+   "creator": {
+    "@id": "https://www.weddings-by-frames.de/#business"
+   }
+  },
+  {
+   "@type": "VideoObject",
    "@id": "https://www.weddings-by-frames.de/#video-NOrR7AtH-0M",
    "name": "Alwina & Ivan — Weddingfilm",
    "description": "Hochzeitsfilm von Alwina und Ivan. Dokumentarisch begleitet von Weddings by Frames, mit Originalton der Trauung und der Reden.",
@@ -1152,6 +1180,15 @@ footer .tagline{margin-bottom:20px}
     </div>
 
     <div class="films-grid">
+      <div class="film-card reveal" role="button" tabindex="0" data-yt="_T5iIYwMrwE"
+           onclick="playYT(this)" onkeydown="if(event.key==='Enter')playYT(this)">
+        <div class="film-thumb">
+          <img class="yt-poster" src="https://i.ytimg.com/vi/_T5iIYwMrwE/maxresdefault.jpg" alt="Weddingfilm von Lisa und Nico — Hochzeitsvideograf Weddings by Frames" width="1280" height="720" loading="lazy">
+          <div class="mini-play"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M8 5.5v13l10-6.5-10-6.5z" fill="#FAF7F2"/></svg></div>
+        </div>
+        <h3>Lisa <em>&</em> Nico</h3>
+        <p>Weddingfilm · Der ganze Tag</p>
+      </div>
       <div class="film-card reveal" role="button" tabindex="0" data-yt="T3aYEm_yRqM"
            onclick="playYT(this)" onkeydown="if(event.key==='Enter')playYT(this)">
         <div class="film-thumb">
