@@ -372,3 +372,27 @@ strong { font-weight: 500; color: var(--charcoal); }
 /* Hochformat-Vorschau im Blindflug-Abschnitt */
 .blind-fig .film-cover { aspect-ratio: 9 / 16; }
 .blind-fig .film-cover img { aspect-ratio: 9 / 16; object-fit: cover; }
+
+
+/* ============ Einwilligungs-Banner ============ */
+.cc { position: fixed; left: 0; right: 0; bottom: 0; z-index: 9000;
+  display: flex; justify-content: center; padding: 16px;
+  transform: translateY(130%); transition: transform .45s cubic-bezier(.2,.8,.3,1);
+  pointer-events: none; }
+.cc.is-open { transform: none; pointer-events: auto; }
+.cc-box { background: var(--ivory); max-width: 620px; width: 100%;
+  padding: 28px 30px 24px; border-top: 3px solid var(--red);
+  box-shadow: 0 30px 70px -24px rgba(36,19,22,.5); }
+.cc-box h2 { font-family: var(--serif); font-size: 24px; font-weight: 400;
+  color: var(--charcoal); margin: 0 0 10px; }
+.cc-box p { font-size: 14.5px; line-height: 1.6; color: var(--text-soft); margin: 0 0 18px; }
+.cc-box p a { color: var(--red); text-decoration: underline; text-underline-offset: 3px; }
+.cc-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.cc-btn { flex: 1 1 180px; font-family: var(--sans); font-size: 12.5px;
+  letter-spacing: .16em; text-transform: uppercase; font-weight: 500;
+  padding: 14px 18px; border: 1px solid rgba(36,19,22,.22);
+  background: #fff; color: var(--charcoal); cursor: pointer; transition: all .3s; }
+.cc-btn:hover { border-color: var(--red); color: var(--red); }
+.cc-btn-red { background: var(--red); border-color: var(--red); color: #fff; }
+.cc-btn-red:hover { background: var(--red-dark); border-color: var(--red-dark); color: #fff; }
+@media (max-width: 600px) { .cc { padding: 0; } .cc-box { padding: 24px 20px 20px; } }
