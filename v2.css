@@ -396,3 +396,18 @@ strong { font-weight: 500; color: var(--charcoal); }
 .cc-btn-red { background: var(--red); border-color: var(--red); color: #fff; }
 .cc-btn-red:hover { background: var(--red-dark); border-color: var(--red-dark); color: #fff; }
 @media (max-width: 600px) { .cc { padding: 0; } .cc-box { padding: 24px 20px 20px; } }
+
+
+/* ============ Kirschblüten im Hintergrund ============ */
+.petals {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;   /* nichts abfangen, alles bleibt klickbar */
+  z-index: 4;             /* über den Flächen, unter Navigation und Banner */
+  opacity: .9;
+}
+/* Solange ein Film läuft, treten die Blüten zurück */
+body.film-laeuft .petals { opacity: .25; transition: opacity .5s ease; }
+@media (prefers-reduced-motion: reduce) { .petals { display: none; } }

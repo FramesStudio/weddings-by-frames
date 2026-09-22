@@ -97,6 +97,7 @@
       iframe.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
       iframe.allowFullscreen = true;
       btn.replaceWith(iframe);
+      document.body.classList.add('film-laeuft');
       window.wbfTrack('film_play', { film: id });
     });
   });
