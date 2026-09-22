@@ -67,6 +67,25 @@
     });
   });
 
+
+  /* ---------- YouTube-Vorschaubilder ----------
+     Fehlt eine Bildgröße, liefert YouTube ein graues 120x90-Platzhalterbild
+     mit Status 200 — ein onerror greift dort nicht. Deshalb Breite prüfen. */
+  document.querySelectorAll('img[data-yt-thumb]').forEach(function (img) {
+    var id = img.getAttribute('data-yt-thumb');
+    var stufen = ['maxresdefault', 'sddefault', 'hqdefault'];
+    var i = 0;
+    function pruefen() {
+      if (img.naturalWidth && img.naturalWidth <= 121 && i < stufen.length - 1) {
+        i += 1;
+        img.src = 'https://i.ytimg.com/vi/' + id + '/' + stufen[i] + '.jpg';
+      }
+    }
+    img.addEventListener('load', pruefen);
+    img.addEventListener('error', pruefen);
+    if (img.complete) pruefen();
+  });
+
   /* ---------- YouTube 2-Klick ---------- */
   document.querySelectorAll('.film[data-yt]').forEach(function (film) {
     var btn = film.querySelector('.film-cover');

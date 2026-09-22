@@ -188,7 +188,7 @@ strong { font-weight: 500; color: var(--charcoal); }
 .real p { font-size: clamp(17px, 1.3vw, 19px); max-width: 520px; }
 .real p:first-of-type { font-family: var(--serif); font-style: italic; font-size: clamp(22px, 2vw, 27px); line-height: 1.35; color: var(--light); }
 .real-fig { position: relative; }
-.real-fig img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border: 10px solid var(--light); box-shadow: 0 40px 80px -30px rgba(0, 0, 0, .6); transform: rotate(1.5deg); }
+.real-fig > img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border: 10px solid var(--light); box-shadow: 0 40px 80px -30px rgba(0, 0, 0, .6); transform: rotate(1.5deg); }
 
 /* ---------- Jahre ---------- */
 .years { padding: var(--y) var(--x); background: linear-gradient(180deg, var(--ivory), var(--cream)); }
@@ -357,11 +357,17 @@ strong { font-weight: 500; color: var(--charcoal); }
 }
 
 
-/* Bridal Shooting im Hochformat bei „Kein Kitsch" */
-.real-fig .real-film { position: relative; }
+/* Bridal Shooting im Hochformat bei „Kein Kitsch" —
+   Rahmen und Drehung liegen auf dem Rahmen, nicht auf dem Bild */
+.real-fig { max-width: 380px; margin-inline: auto; }
+.real-fig .real-film { position: relative; display: block; overflow: hidden;
+  border: 10px solid var(--light); background: #000;
+  box-shadow: 0 40px 80px -30px rgba(0, 0, 0, .6); transform: rotate(1.5deg); }
 .real-fig .film-cover { aspect-ratio: 9 / 16; }
-.real-fig .film-cover img { aspect-ratio: 9 / 16; object-fit: cover; }
+.real-fig .real-film img { width: 100%; height: 100%; aspect-ratio: 9 / 16;
+  object-fit: cover; border: 0; box-shadow: none; transform: none; }
 .real-fig iframe { width: 100%; aspect-ratio: 9 / 16; border: 0; display: block; }
+.real-fig .film-caption { margin-top: 26px; color: var(--rose); }
 
 /* Hochformat-Vorschau im Blindflug-Abschnitt */
 .blind-fig .film-cover { aspect-ratio: 9 / 16; }
