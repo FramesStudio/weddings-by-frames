@@ -155,6 +155,9 @@
       .then(function (res) {
         if (!res.ok) throw new Error('HTTP ' + res.status);
         lead.hidden = true;
+        // Überschrift und Einleitung verschwinden, sobald abgeschickt wurde
+        var intro = document.getElementById('form-intro');
+        if (intro) intro.hidden = true;
         success.hidden = false;
         success.focus();
         window.wbfTrack('lead');
