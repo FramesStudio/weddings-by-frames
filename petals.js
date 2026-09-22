@@ -10,22 +10,25 @@
 
   /* ---------- Einstellungen zum Nachjustieren ---------- */
   var EINST = {
-    anzahlDesktop: 16,
+    anzahlDesktop: 15,
     anzahlMobil:    8,
-    groesseMin:     7,    // Pixel
-    groesseMax:    15,
-    deckkraftMin: 0.16,   // sehr dezent
-    deckkraftMax: 0.40,
-    sinkenMin:   0.10,    // Pixel pro Bild
-    sinkenMax:   0.32,
+    groesseMin:    14,    // Pixel
+    groesseMax:    30,
+    deckkraftMin: 0.30,   // dezent, aber sichtbar
+    deckkraftMax: 0.62,
+    sinkenMin:   0.12,    // Pixel pro Bild
+    sinkenMax:   0.36,
     scrollFaktor: 0.22,   // wie stark sie beim Scrollen mitziehen
-    schein:        9      // Weichheit des Scheins
+    schein:       14      // Weichheit des Scheins
   };
 
+  /* Rosétöne mit genug Sättigung: Sie heben sich sowohl vom hellen
+     Elfenbein als auch von den dunklen Abschnitten ab. Ein zartes
+     Rosé wäre auf Elfenbein praktisch unsichtbar gewesen. */
   var FARBEN = [
-    [235, 198, 194],   // Rosé, aus der Markenpalette
-    [247, 237, 232],   // Creme
-    [217, 167, 162]    // Rosé, kräftiger
+    [217, 167, 162],   // Rosé, kräftig
+    [201, 138, 133],   // Altrosa
+    [235, 198, 194]    // Rosé, hell
   ];
 
   /* ---------- Abbrechen, wenn nicht erwünscht oder nicht sinnvoll ---------- */
