@@ -336,12 +336,9 @@ strong { font-weight: 500; color: var(--charcoal); }
 /* Pauline & Niklas im Foto-oder-Film-Abschnitt läuft jetzt über YouTube */
 .player.film iframe { width: 100%; aspect-ratio: 16 / 9; border: 0; display: block; }
 
-/* vier statt drei Filme */
+/* drei Querformat-Filme nebeneinander */
 @media (min-width: 900px) {
-  .films-grid { grid-template-columns: repeat(2, 1fr); gap: 34px; }
-}
-@media (min-width: 1200px) {
-  .films-grid { grid-template-columns: repeat(4, 1fr); gap: 26px; }
+  .films-grid { grid-template-columns: repeat(3, 1fr); gap: 28px; }
 }
 
 /* Nata & Nils */
@@ -358,3 +355,14 @@ strong { font-weight: 500; color: var(--charcoal); }
 @media (min-width: 900px) {
   .wir-inner { grid-template-columns: 1.1fr .9fr; gap: 64px; }
 }
+
+
+/* Bridal Shooting im Hochformat bei „Kein Kitsch" */
+.real-fig .real-film { position: relative; }
+.real-fig .film-cover { aspect-ratio: 9 / 16; }
+.real-fig .film-cover img { aspect-ratio: 9 / 16; object-fit: cover; }
+.real-fig iframe { width: 100%; aspect-ratio: 9 / 16; border: 0; display: block; }
+
+/* Hochformat-Vorschau im Blindflug-Abschnitt */
+.blind-fig .film-cover { aspect-ratio: 9 / 16; }
+.blind-fig .film-cover img { aspect-ratio: 9 / 16; object-fit: cover; }
