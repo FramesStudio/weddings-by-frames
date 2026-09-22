@@ -1,7 +1,12 @@
 /* Weddings by Frames · Kirschblüten im Hintergrund
    ------------------------------------------------
-   Wenige, sehr zurückhaltende Blütenblätter, die langsam sinken und beim
-   Scrollen mitgehen. Jedes hat einen weichen Schein am Rand.
+   Jeder Abschnitt bekommt eine eigene Blütenebene, die zwischen seinem
+   Hintergrund und dem Text liegt. Dadurch schweben die Blüten wirklich
+   hinter der Schrift und nicht darüber.
+
+   Warum nicht eine Ebene über die ganze Seite? Die Abschnitte haben
+   deckende Hintergrundfarben. Eine durchgehende Ebene läge entweder
+   über allem oder wäre komplett verdeckt.
 
    Zum Abschalten: die Zeile <script src="/petals.js" defer></script>
    in der index.html löschen. Sonst wird nichts anderes berührt. */
@@ -10,51 +15,42 @@
 
   /* ---------- Einstellungen zum Nachjustieren ---------- */
   var EINST = {
-    anzahlDesktop: 15,
-    anzahlMobil:    8,
-    groesseMin:    14,    // Pixel
-    groesseMax:    30,
-    deckkraftMin: 0.30,   // dezent, aber sichtbar
-    deckkraftMax: 0.62,
-    sinkenMin:   0.12,    // Pixel pro Bild
-    sinkenMax:   0.36,
-    scrollFaktor: 0.22,   // wie stark sie beim Scrollen mitziehen
-    schein:       14      // Weichheit des Scheins
+    dichte:       0.000018,  // Blüten je Pixel Fläche (mehr = mehr Blüten)
+    hoechstens:        14,   // Obergrenze je Abschnitt
+    groesseMin:        14,   // Pixel
+    groesseMax:        30,
+    deckkraftMin:    0.34,
+    deckkraftMax:    0.70,
+    sinkenMin:       0.12,   // Pixel pro Bild
+    sinkenMax:       0.36,
+    scrollFaktor:    0.22,   // wie stark sie beim Scrollen mitziehen
+    schein:            14    // Weichheit des Scheins
   };
 
-  /* Rosétöne mit genug Sättigung: Sie heben sich sowohl vom hellen
-     Elfenbein als auch von den dunklen Abschnitten ab. Ein zartes
-     Rosé wäre auf Elfenbein praktisch unsichtbar gewesen. */
+  /* Rosétöne mit genug Sättigung: heben sich vom hellen Elfenbein
+     ebenso ab wie von den dunklen Abschnitten. */
   var FARBEN = [
     [217, 167, 162],   // Rosé, kräftig
     [201, 138, 133],   // Altrosa
     [235, 198, 194]    // Rosé, hell
   ];
 
-  /* ---------- Abbrechen, wenn nicht erwünscht oder nicht sinnvoll ---------- */
-  var ruhig = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (ruhig) return;                       // Nutzer wünscht keine Bewegung
+  /* ---------- Abbrechen, wenn nicht erwünscht ---------- */
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   if (!window.requestAnimationFrame) return;
 
-  var canvas = document.createElement('canvas');
-  canvas.className = 'petals';
-  canvas.setAttribute('aria-hidden', 'true');
-  var ctx = canvas.getContext && canvas.getContext('2d');
-  if (!ctx) return;
-
-  var breite = 0, hoehe = 0, dpr = 1;
-  var blueten = [];
+  var ebenen = [];               // je Abschnitt eine
   var scrollAlt = window.pageYOffset || 0;
   var scrollDelta = 0;
   var laeuft = true;
 
   function zufall(a, b) { return a + Math.random() * (b - a); }
 
-  function neueBluete(obenStarten) {
+  function neueBluete(breite, hoehe, obenStarten) {
     var f = FARBEN[Math.floor(Math.random() * FARBEN.length)];
     return {
       x: zufall(0, breite),
-      y: obenStarten ? zufall(-120, -10) : zufall(0, hoehe),
+      y: obenStarten ? zufall(-140, -20) : zufall(0, hoehe),
       groesse: zufall(EINST.groesseMin, EINST.groesseMax),
       deckkraft: zufall(EINST.deckkraftMin, EINST.deckkraftMax),
       sinken: zufall(EINST.sinkenMin, EINST.sinkenMax),
@@ -63,29 +59,28 @@
       dreh: zufall(-0.006, 0.006),
       pendel: zufall(0, Math.PI * 2),
       pendelTempo: zufall(0.004, 0.011),
-      pendelWeite: zufall(6, 20),
       farbe: f
     };
   }
 
-  function aufbauen() {
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
-    breite = window.innerWidth;
-    hoehe = window.innerHeight;
-    canvas.width = Math.floor(breite * dpr);
-    canvas.height = Math.floor(hoehe * dpr);
-    canvas.style.width = breite + 'px';
-    canvas.style.height = hoehe + 'px';
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  function ebeneAufbauen(e) {
+    var r = e.abschnitt.getBoundingClientRect();
+    e.breite = Math.max(1, Math.round(r.width));
+    e.hoehe = Math.max(1, Math.round(e.abschnitt.offsetHeight));
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    e.canvas.width = Math.floor(e.breite * dpr);
+    e.canvas.height = Math.floor(e.hoehe * dpr);
+    e.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-    var anzahl = breite < 760 ? EINST.anzahlMobil : EINST.anzahlDesktop;
-    blueten = [];
-    for (var i = 0; i < anzahl; i++) blueten.push(neueBluete(false));
+    var anzahl = Math.round(e.breite * e.hoehe * EINST.dichte);
+    anzahl = Math.max(3, Math.min(EINST.hoechstens, anzahl));
+    if (e.breite < 760) anzahl = Math.max(2, Math.round(anzahl * 0.55));
+
+    e.blueten = [];
+    for (var i = 0; i < anzahl; i++) e.blueten.push(neueBluete(e.breite, e.hoehe, false));
   }
 
-  /* ---------- Form eines Blütenblatts ---------- */
-  function blattZeichnen(b) {
-    var g = b.groesse;
+  function blattZeichnen(ctx, g) {
     ctx.beginPath();
     ctx.moveTo(0, -g);
     ctx.bezierCurveTo(g * 0.72, -g * 0.62, g * 0.58, g * 0.52, 0, g);
@@ -93,23 +88,25 @@
     ctx.closePath();
   }
 
-  function bild() {
-    if (!laeuft) return;
-    ctx.clearRect(0, 0, breite, hoehe);
+  function ebeneZeichnen(e) {
+    var ctx = e.ctx;
+    ctx.clearRect(0, 0, e.breite, e.hoehe);
 
-    for (var i = 0; i < blueten.length; i++) {
-      var b = blueten[i];
+    for (var i = 0; i < e.blueten.length; i++) {
+      var b = e.blueten[i];
 
       b.y += b.sinken + scrollDelta * EINST.scrollFaktor;
       b.pendel += b.pendelTempo;
       b.x += b.drift + Math.sin(b.pendel) * 0.28;
       b.winkel += b.dreh;
 
-      // Am Rand wieder einsetzen
-      if (b.y - b.groesse > hoehe + 60) { blueten[i] = neueBluete(true); continue; }
-      if (b.y + b.groesse < -160)       { blueten[i] = neueBluete(false); blueten[i].y = hoehe + 20; continue; }
-      if (b.x < -60)          b.x = breite + 40;
-      if (b.x > breite + 60)  b.x = -40;
+      if (b.y - b.groesse > e.hoehe + 80) { e.blueten[i] = neueBluete(e.breite, e.hoehe, true); continue; }
+      if (b.y + b.groesse < -180) {
+        e.blueten[i] = neueBluete(e.breite, e.hoehe, false);
+        e.blueten[i].y = e.hoehe + 30; continue;
+      }
+      if (b.x < -60) b.x = e.breite + 40;
+      if (b.x > e.breite + 60) b.x = -40;
 
       var c = b.farbe;
       var farbe = 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',';
@@ -117,13 +114,11 @@
       ctx.save();
       ctx.translate(b.x, b.y);
       ctx.rotate(b.winkel);
-      // weicher Schein als Umrandung
       ctx.shadowColor = farbe + (b.deckkraft * 0.85) + ')';
       ctx.shadowBlur = EINST.schein;
       ctx.fillStyle = farbe + b.deckkraft + ')';
-      blattZeichnen(b);
+      blattZeichnen(ctx, b.groesse);
       ctx.fill();
-      // zarte Mittellinie, damit es nach Blütenblatt aussieht
       ctx.shadowBlur = 0;
       ctx.strokeStyle = farbe + (b.deckkraft * 0.5) + ')';
       ctx.lineWidth = 0.6;
@@ -133,8 +128,14 @@
       ctx.stroke();
       ctx.restore();
     }
+  }
 
-    scrollDelta *= 0.90;          // Scroll-Schub klingt weich aus
+  function bild() {
+    if (!laeuft) return;
+    for (var i = 0; i < ebenen.length; i++) {
+      if (ebenen[i].sichtbar) ebeneZeichnen(ebenen[i]);   // nur was im Blick ist
+    }
+    scrollDelta *= 0.90;
     requestAnimationFrame(bild);
   }
 
@@ -155,20 +156,45 @@
   var umbauWartet;
   window.addEventListener('resize', function () {
     clearTimeout(umbauWartet);
-    umbauWartet = setTimeout(aufbauen, 200);
+    umbauWartet = setTimeout(function () { ebenen.forEach(ebeneAufbauen); }, 200);
   });
 
-  // Im Hintergrundtab anhalten, spart Strom
   document.addEventListener('visibilitychange', function () {
     if (document.hidden) { laeuft = false; }
     else if (!laeuft) { laeuft = true; requestAnimationFrame(bild); }
   });
 
   function start() {
-    document.body.appendChild(canvas);
-    aufbauen();
-    requestAnimationFrame(bild);
+    var abschnitte = document.querySelectorAll('section');
+    var beobachter = window.IntersectionObserver ? new IntersectionObserver(function (eintraege) {
+      eintraege.forEach(function (ein) {
+        var e = ebenen.filter(function (x) { return x.abschnitt === ein.target; })[0];
+        if (e) e.sichtbar = ein.isIntersecting;
+      });
+    }, { rootMargin: '150px 0px' }) : null;
+
+    Array.prototype.forEach.call(abschnitte, function (sec) {
+      // Der Hero hat bereits ein Video im Hintergrund — dort keine Blüten
+      if (sec.classList.contains('hero')) return;
+
+      var canvas = document.createElement('canvas');
+      canvas.className = 'petals-bg';
+      canvas.setAttribute('aria-hidden', 'true');
+      var ctx = canvas.getContext && canvas.getContext('2d');
+      if (!ctx) return;
+
+      sec.classList.add('hat-blueten');
+      sec.insertBefore(canvas, sec.firstChild);
+
+      var e = { abschnitt: sec, canvas: canvas, ctx: ctx, blueten: [], sichtbar: !beobachter };
+      ebeneAufbauen(e);
+      ebenen.push(e);
+      if (beobachter) beobachter.observe(sec);
+    });
+
+    if (ebenen.length) requestAnimationFrame(bild);
   }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', start);
   } else { start(); }
