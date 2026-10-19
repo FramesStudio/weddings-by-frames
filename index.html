@@ -2,235 +2,337 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
+<script>document.documentElement.classList.add('js')</script>
 <meta name="facebook-domain-verification" content="386lote3g37csmqzs6dokntscf1c2q">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Warum unsere Brautpaare weinen · Weddings by Frames</title>
 <meta name="description" content="Warum unsere Brautpaare regelmäßig weinen, wenn sie ihren Film zum ersten Mal sehen. Hochzeitsfilme mit euren Stimmen aus Lohne bei Vechta.">
-<!-- VORSCHAU: noindex vor Livegang entfernen -->
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-<meta name="theme-color" content="#241316">
+<meta name="theme-color" content="#110A0B">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="de_DE">
 <meta property="og:title" content="Warum unsere Brautpaare regelmäßig weinen, wenn sie ihren Film zum ersten Mal sehen.">
 <meta property="og:description" content="Weil sie ihren Hochzeitstag plötzlich noch einmal erleben – und Dinge sehen, die sie an diesem Tag gar nicht mitbekommen haben.">
-<meta property="og:image" content="/assets/still-a17-kiss.jpg">
-<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
-<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-<link rel="preload" href="/fonts/CormorantGaramond-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/Jost-normal-300-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/fonts/fonts-v2.css">
-<link rel="stylesheet" href="/v2.css">
+<meta property="og:image" content="https://www.weddings-by-frames.de/assets/still-a17-kiss.jpg">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preload" href="fonts/CormorantGaramond-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/Jost-normal-300-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/v3/hero-poster.webp" as="image">
+<link rel="stylesheet" href="v3.css">
 <link rel="canonical" href="https://www.weddings-by-frames.de/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Weddings by Frames",
+  "description": "Hochzeitsfilme mit euren Stimmen. Hochzeitsvideografie und auf Wunsch Hochzeitsfotografie aus Lohne bei Vechta.",
+  "url": "https://www.weddings-by-frames.de/",
+  "image": "https://www.weddings-by-frames.de/assets/still-a17-kiss.jpg",
+  "telephone": "+49 151 5731 2699",
+  "email": "info@frames-studio.de",
+  "address": { "@type": "PostalAddress", "streetAddress": "Bergweg 56", "postalCode": "49393", "addressLocality": "Lohne (Oldenburg)", "addressRegion": "Niedersachsen", "addressCountry": "DE" },
+  "sameAs": ["https://www.instagram.com/weddings.by.frames/", "https://www.youtube.com/@Weddings.by.Frames"]
+}
+</script>
 </head>
+<!--
+  Weddings by Frames · Landingpage v3 (immersiv)
+  ===============================================
+  Hauptidee: Euer Tag läuft beim Scrollen noch einmal ab. Eine Uhr rast von 10:00 bis 23:30,
+  das Filmmaterial läuft mit – und am Ende steht die Frage „Wo ist die Zeit geblieben?“.
+  Begleiter: Ein stummes Foto wird zum Film. Ein Bild altert über 20 Jahre, die Stimmen bleiben.
+
+  Dateien
+  - v3.css         Gestaltung. Ohne html.motion ist ALLES sichtbar (kein JS, Reduced Motion).
+  - site.js        Funktion ohne Animation: Tracking, Header, Trailer, YouTube 2-Klick, Formular.
+  - motion.js      Animation: Lenis, GSAP-Szenen, Uhr-Scrub, Cursor. Konstanten oben in der Datei.
+  - consent.js     unverändert (Meta Pixel erst nach Zustimmung).
+  - vendor/        GSAP 3.15.0, ScrollTrigger, Lenis 1.3.27 – lokal gehostet, kein CDN.
+-->
 <body>
+<a class="skip" href="#anfrage">Direkt zur Terminanfrage</a>
+
+<div class="grain" aria-hidden="true"></div>
+<div class="cursor" aria-hidden="true"><span class="cursor-dot"></span><span class="cursor-ring"><span class="cursor-label">Play</span></span></div>
 
 <header class="top" id="topbar">
-  <a href="#top" class="wordmark" aria-label="Weddings by Frames">
-    <img src="/assets/logo.svg" alt="" width="26" height="28">
+  <a href="#top" class="wordmark" aria-label="Weddings by Frames, nach oben">
+    <img src="assets/logo.svg" alt="" width="26" height="28">
     <span><i>Weddings</i> by Frames</span>
   </a>
-  <a href="#anfrage" class="top-cta" data-track="cta_header">Termin prüfen</a>
+  <nav class="top-nav" aria-label="Abschnitte">
+    <a href="#tag">Euer Tag</a>
+    <a href="#filme">Filme</a>
+    <a href="#wir">Über uns</a>
+  </nav>
+  <a href="#anfrage" class="top-cta" data-track="cta_header" data-magnetic>Termin prüfen</a>
 </header>
 
 <main id="top">
 
 <!-- ================= HERO ================= -->
-<section class="hero">
-  <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="/assets/hero-poster.jpg" aria-hidden="true">
-    <source src="/assets/hero-loop.mp4" type="video/mp4">
-  </video>
+<section class="hero" aria-labelledby="hero-h1">
+  <div class="hero-media" aria-hidden="true">
+    <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/v3/hero-poster.webp">
+      <source src="assets/hero-loop.mp4" type="video/mp4">
+    </video>
+  </div>
   <div class="hero-grade" aria-hidden="true"></div>
+  <div class="shutter" aria-hidden="true"></div>
+
+  <div class="viewfinder" aria-hidden="true">
+    <span class="vf-corner vf-tl"></span><span class="vf-corner vf-tr"></span><span class="vf-corner vf-bl"></span><span class="vf-corner vf-br"></span>
+    <span class="vf-rec"><b></b>REC</span>
+    <span class="vf-tc" id="tc">00:00:00:00</span>
+    <span class="vf-meta">Lohne · Vechta · Nordwesten</span>
+  </div>
 
   <div class="hero-inner">
-    <div class="hero-glass">
-      <img class="hero-mark" src="/assets/logo.svg" alt="" width="34" height="37">
-      <h1>Warum unsere Brautpaare regelmäßig weinen, wenn sie ihren Film <i>zum ersten Mal sehen.</i></h1>
-      <p class="hero-sub">Weil sie ihren Hochzeitstag plötzlich noch einmal erleben – und Dinge sehen, die sie an diesem Tag selbst gar nicht mitbekommen haben.</p>
-      <p class="hero-text">Monate der Vorbereitung. Tausende Entscheidungen. Und dann rast der Tag in wenigen Stunden an euch vorbei. Euer Hochzeitsfilm hält nicht einfach nur Bilder fest. Er gibt euch die Stimmen, das Lachen, die Nervosität und die echten Reaktionen eurer Lieblingsmenschen zurück.</p>
-      <div class="hero-actions">
-        <a href="#anfrage" class="button button-red" data-track="cta_hero">Prüfen, ob euer Hochzeitstermin noch frei ist</a>
-        <a href="#film" class="hero-play"><span class="hero-play-ring"></span><span>Eine Minute mit Ton · 1:16</span></a>
+    <p class="kicker" data-hero-in style="--d:0">Hochzeitsfilme mit euren Stimmen</p>
+    <h1 id="hero-h1" class="h1-in"><span class="rv-m"><span class="rv-i" style="--w:0">Warum</span></span> <span class="rv-m"><span class="rv-i" style="--w:1">unsere</span></span> <span class="rv-m"><span class="rv-i" style="--w:2">Brautpaare</span></span> <span class="rv-m"><span class="rv-i" style="--w:3">regelmäßig</span></span> <span class="rv-m"><span class="rv-i" style="--w:4">weinen,</span></span> <span class="rv-m"><span class="rv-i" style="--w:5">wenn</span></span> <span class="rv-m"><span class="rv-i" style="--w:6">sie</span></span> <span class="rv-m"><span class="rv-i" style="--w:7">ihren</span></span> <span class="rv-m"><span class="rv-i" style="--w:8">Film</span></span> <span class="rv-m"><span class="rv-i" style="--w:9"><i>zum</i></span></span> <span class="rv-m"><span class="rv-i" style="--w:10"><i>ersten</i></span></span> <span class="rv-m"><span class="rv-i" style="--w:11"><i>Mal</i></span></span> <span class="rv-m"><span class="rv-i" style="--w:12"><i>sehen.</i></span></span></h1>
+    <p class="hero-sub" data-hero-in style="--d:1">Weil sie ihren Hochzeitstag plötzlich noch einmal erleben – und Dinge sehen, die sie an diesem Tag selbst gar nicht mitbekommen haben.</p>
+    <div class="hero-actions" data-hero-in style="--d:2">
+      <a href="#anfrage" class="button button-red" data-track="cta_hero" data-magnetic>Prüfen, ob euer Termin noch frei ist</a>
+      <button type="button" class="play-link" data-trailer data-cursor="play">
+        <span class="play-ring" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg></span>
+        <span>Eine Minute mit Ton <small>1:16</small></span>
+      </button>
+    </div>
+  </div>
+
+  <a href="#tag" class="scroll-cue" aria-label="Weiter zu: Euer Tag"><span>Scrollt. Euer Tag beginnt.</span><i aria-hidden="true"></i></a>
+</section>
+
+<!-- ================= EUER TAG (Hauptidee: Uhr-Scrub) ================= -->
+<section class="tag" id="tag" aria-labelledby="tag-h2">
+  <div class="tag-stage">
+    <div class="tag-media" aria-hidden="true">
+      <img class="tag-poster" src="assets/v3/day/d040.webp" alt="" width="960" height="540" loading="lazy">
+      <canvas class="tag-canvas"></canvas>
+    </div>
+    <div class="tag-shade" aria-hidden="true"></div>
+
+    <div class="tag-clock" aria-hidden="true">
+      <span class="tag-clock-label">Euer Tag</span>
+      <span class="tag-time" id="tag-time">23:30</span>
+      <span class="tag-moment" id="tag-moment">Von Getting Ready bis spät in die Nacht</span>
+    </div>
+
+    <div class="beats">
+      <div class="beat beat-intro">
+        <span class="eyebrow">Was passieren wird</span>
+        <p class="beat-big">Monate der Vorbereitung. Tausende Entscheidungen. <i>Und dann rast der Tag in wenigen Stunden an euch vorbei.</i></p>
       </div>
+      <div class="beat">
+        <span class="beat-n">Während du dich fertig machst</span>
+        <p>…siehst du nicht, wie nervös dein Partner im Nebenzimmer die Krawatte richtet.</p>
+      </div>
+      <div class="beat">
+        <span class="beat-n">Während ihr Fotos macht</span>
+        <p>…siehst du nicht, wie eure Freunde auf der Terrasse lachen und auf euch anstoßen.</p>
+      </div>
+      <div class="beat">
+        <span class="beat-n">Und während der Reden</span>
+        <p>…seid ihr so im Moment, dass ihr die Blicke eurer Eltern im Hintergrund gar nicht wahrnehmen könnt.</p>
+      </div>
+    </div>
+
+    <div class="tag-end">
+      <h2 id="tag-h2">Am Abend eurer Hochzeit um 23:30 Uhr werdet ihr euch ansehen und fragen: <i>„Wo ist die Zeit geblieben?“</i></h2>
+    </div>
+
+    <div class="timeline" aria-hidden="true">
+      <span class="tl-track"><span class="tl-fill"></span><span class="tl-head"></span></span>
+      <span class="tl-ticks"><span>10</span><span>12</span><span>14</span><span>16</span><span>18</span><span>20</span><span>22</span><span>24</span></span>
     </div>
   </div>
 </section>
 
-<!-- ================= BLINDFLUG ================= -->
-<section class="blind">
-  <div class="blind-grid">
-    <figure class="blind-fig">
-      <div class="film blind-film" data-yt="EWlNcw25agc">
-        <button type="button" class="film-cover" aria-label="Bridal Shooting abspielen">
-          <img data-yt-thumb="EWlNcw25agc" src="https://i.ytimg.com/vi/EWlNcw25agc/maxresdefault.jpg" alt="Ausschnitt aus einem Bridal Shooting" loading="lazy" referrerpolicy="strict-origin-when-cross-origin">
-          <span class="playbtn playbtn-sm"><span class="playbtn-ring"></span></span>
-        </button>
-        <h3 class="film-caption">Bridal Shooting · 18 Sek.</h3>
-      </div>
-    </figure>
-    <div class="blind-copy">
-      <span class="eyebrow">Was passieren wird</span>
-      <h2>Am Abend eurer Hochzeit um 23:30 Uhr werdet ihr euch ansehen und fragen: <i>„Wo ist die Zeit geblieben?“</i></h2>
-      <p>Ihr habt monatelang geplant. Jedes Detail ausgesucht. Und wenn der Tag da ist, läuft alles ab wie im Rausch.</p>
-      <ul class="blind-list">
-        <li>Während du dich fertig machst, siehst du nicht, wie nervös dein Partner im Nebenzimmer die Krawatte richtet.</li>
-        <li>Während ihr Fotos macht, siehst du nicht, wie eure Freunde auf der Terrasse lachen und auf euch anstoßen.</li>
-        <li>Und während der Reden seid ihr so im Moment, dass ihr die Blicke eurer Eltern im Hintergrund gar nicht wahrnehmen könnt.</li>
+<section class="perspective" aria-label="Die zweite Perspektive">
+  <p class="readlight" data-readlight>Ein guter Hochzeitsfilm ist eure zweite Perspektive. Er schenkt euch all die emotionalen und versteckten Momente, <i>die ihr an diesem Tag nicht sehen werdet.</i></p>
+  <a href="#anfrage" class="button button-ghost-light" data-track="cta_perspektive" data-magnetic>Euren Termin prüfen</a>
+</section>
+
+<!-- ================= FOTO ODER FILM ================= -->
+<section class="stumm" id="film" aria-labelledby="stumm-h2">
+  <div class="stumm-stage">
+    <div class="stumm-frame" aria-hidden="true">
+      <img class="stumm-still" src="assets/v3/alive-still.webp" alt="" width="1280" height="720" loading="lazy">
+      <video class="stumm-video" muted loop playsinline preload="none" poster="assets/v3/alive-still.webp">
+        <source src="assets/v3/alive.mp4" type="video/mp4">
+      </video>
+      <svg class="wave" viewBox="0 0 600 60" preserveAspectRatio="none" focusable="false"><g></g></svg>
+    </div>
+
+    <div class="stumm-copy">
+      <span class="eyebrow">Foto oder Film</span>
+      <h2 id="stumm-h2" class="stumm-a">Ein Foto zeigt, wie es aussah.</h2>
+      <p class="stumm-lead">Fotos sind unverzichtbar. Sie hängen an der Wand und stehen im Rahmen. <strong>Aber ein Foto ist stumm.</strong></p>
+      <ul class="stumm-list">
+        <li>Es zeigt dir nicht, wie die Stimme deines Partners leicht gezittert hat, als das Eheversprechen kam.</li>
+        <li>Es zeigt dir nicht das herzhafte Lachen deines besten Freundes bei der Rede.</li>
+        <li>Es zeigt dir nicht die Bewegung, die Musik, die Akustik und die echte Atmosphäre eurer Feier.</li>
       </ul>
-      <p class="blind-close">Ein guter Hochzeitsfilm ist eure zweite Perspektive. Er schenkt euch all die emotionalen und versteckten Momente, die ihr nicht sehen werdet.</p>
     </div>
-  </div>
-</section>
 
-<!-- ================= FOTO VS FILM ================= -->
-<section class="photo" id="film">
-  <div class="photo-head">
-    <span class="eyebrow">Foto oder Film</span>
-    <h2>Ein Foto zeigt, wie es aussah. <i>Ein Film lässt dich wieder hören, wie es sich angefühlt hat.</i></h2>
-  </div>
-  <div class="player film" data-yt="vtHNwSGUSG4">
-    <button class="player-cover film-cover" type="button" aria-label="Hochzeitsfilm von Pauline und Niklas abspielen">
-      <img data-yt-thumb="vtHNwSGUSG4" src="https://i.ytimg.com/vi/vtHNwSGUSG4/maxresdefault.jpg" alt="Pauline und Niklas an ihrem Hochzeitstag" loading="lazy" referrerpolicy="strict-origin-when-cross-origin">
-      <span class="playbtn"><span class="playbtn-ring"></span><span class="playbtn-label">Ton an</span></span>
-    </button>
-    <h3 class="sr-only">Pauline &amp; Niklas</h3>
-  </div>
-  <p class="player-caption"><span class="script">Pauline <b>&amp;</b> Niklas</span><span>Ihr Hochzeitsfilm · 4 Min.</span></p>
-
-  <div class="photo-copy">
-    <p class="photo-lead">Fotos sind unverzichtbar. Sie hängen an der Wand und stehen im Rahmen.<br><strong>Aber ein Foto ist stumm.</strong></p>
-    <ul class="photo-list">
-      <li>Es zeigt dir nicht, wie die Stimme deines Partners leicht gezittert hat, als das Eheversprechen kam.</li>
-      <li>Es zeigt dir nicht das herzhafte Lachen deines besten Freundes bei der Rede.</li>
-      <li>Es zeigt dir nicht die Bewegung, die Musik, die Akustik und die echte Atmosphäre eurer Feier.</li>
-    </ul>
-    <p class="photo-close">Wenn du wissen willst, wie ihr aussaht, schaust du auf ein Foto. <i>Wenn du wissen willst, wie ihr gefühlt habt, schaust du euren Hochzeitsfilm.</i></p>
+    <div class="stumm-b">
+      <p class="stumm-b-h"><i>Ein Film lässt dich wieder hören, wie es sich angefühlt hat.</i></p>
+      <button type="button" class="play-big" data-trailer data-cursor="play" data-track="trailer_stumm">
+        <span class="play-big-ring" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></svg></span>
+        <span>Ton an · Alwina &amp; Ivan · 1:16</span>
+      </button>
+    </div>
   </div>
 </section>
 
 <!-- ================= FILME ================= -->
-<section class="films" id="filme">
-  <div class="films-head">
+<section class="filme" id="filme" aria-labelledby="filme-h2">
+  <div class="filme-head">
     <span class="eyebrow">Echte Paare, echte Filme</span>
-    <h2>Schaut selbst.</h2>
+    <h2 id="filme-h2">Schaut selbst.</h2>
+    <p class="filme-hint" aria-hidden="true">Zieht oder scrollt <span>→</span></p>
   </div>
-  <div class="films-grid">
-    <div class="film" data-yt="_T5iIYwMrwE">
-      <button type="button" class="film-cover" aria-label="Hochzeitsfilm von Lisa und Nico abspielen">
-        <img data-yt-thumb="_T5iIYwMrwE" src="https://i.ytimg.com/vi/_T5iIYwMrwE/maxresdefault.jpg" alt="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin">
-        <span class="playbtn playbtn-sm"><span class="playbtn-ring"></span></span>
-      </button>
-      <h3>Lisa <span class="amp">&amp;</span> Nico</h3>
-      <p class="film-sub">Hochzeitsfilm</p>
-    </div>
-    <div class="film" data-yt="T3aYEm_yRqM">
-      <button type="button" class="film-cover" aria-label="Hochzeitsfilm von Alwina und Ivan in voller Länge abspielen">
-        <img data-yt-thumb="T3aYEm_yRqM" src="https://i.ytimg.com/vi/T3aYEm_yRqM/maxresdefault.jpg" alt="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin">
-        <span class="playbtn playbtn-sm"><span class="playbtn-ring"></span></span>
-      </button>
-      <h3>Alwina <span class="amp">&amp;</span> Ivan</h3>
-      <p class="film-sub">Dokumentation · Der ganze Tag · 47 Min.</p>
-    </div>
-    <div class="film" data-yt="NOrR7AtH-0M">
-      <button type="button" class="film-cover" aria-label="Hochzeitsfilm von Alwina und Ivan abspielen">
-        <img data-yt-thumb="NOrR7AtH-0M" src="https://i.ytimg.com/vi/NOrR7AtH-0M/maxresdefault.jpg" alt="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin">
-        <span class="playbtn playbtn-sm"><span class="playbtn-ring"></span></span>
-      </button>
-      <h3>Alwina <span class="amp">&amp;</span> Ivan</h3>
-      <p class="film-sub">Hochzeitsfilm · 7 Min.</p>
+  <div class="rail">
+    <div class="rail-track">
+      <article class="film film-xl" data-yt="vtHNwSGUSG4">
+        <button type="button" class="film-cover" aria-label="Hochzeitsfilm von Pauline und Niklas abspielen" data-cursor="play">
+          <img data-yt-thumb="vtHNwSGUSG4" src="https://i.ytimg.com/vi/vtHNwSGUSG4/maxresdefault.jpg" alt="Pauline und Niklas an ihrem Hochzeitstag" loading="lazy" referrerpolicy="strict-origin-when-cross-origin">
+        </button>
+        <div class="film-meta"><h3>Pauline <span class="amp">&amp;</span> Niklas</h3><p>Hochzeitsfilm · 4 Min.</p></div>
+      </article>
+      <article class="film" data-yt="_T5iIYwMrwE">
+        <button type="button" class="film-cover" aria-label="Hochzeitsfilm von Lisa und Nico abspielen" data-cursor="play">
+          <img data-yt-thumb="_T5iIYwMrwE" src="https://i.ytimg.com/vi/_T5iIYwMrwE/maxresdefault.jpg" alt="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin">
+        </button>
+        <div class="film-meta"><h3>Lisa <span class="amp">&amp;</span> Nico</h3><p>Hochzeitsfilm</p></div>
+      </article>
+      <article class="film" data-yt="NOrR7AtH-0M">
+        <button type="button" class="film-cover" aria-label="Hochzeitsfilm von Alwina und Ivan abspielen" data-cursor="play">
+          <img data-yt-thumb="NOrR7AtH-0M" src="https://i.ytimg.com/vi/NOrR7AtH-0M/maxresdefault.jpg" alt="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin">
+        </button>
+        <div class="film-meta"><h3>Alwina <span class="amp">&amp;</span> Ivan</h3><p>Hochzeitsfilm · 7 Min.</p></div>
+      </article>
+      <article class="film" data-yt="T3aYEm_yRqM">
+        <button type="button" class="film-cover" aria-label="Hochzeitsfilm von Alwina und Ivan in voller Länge abspielen" data-cursor="play">
+          <img data-yt-thumb="T3aYEm_yRqM" src="https://i.ytimg.com/vi/T3aYEm_yRqM/maxresdefault.jpg" alt="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin">
+        </button>
+        <div class="film-meta"><h3>Alwina <span class="amp">&amp;</span> Ivan</h3><p>Dokumentation · Der ganze Tag · 47 Min.</p></div>
+      </article>
+      <article class="film" data-yt="EWlNcw25agc">
+        <button type="button" class="film-cover" aria-label="Bridal Shooting abspielen, 18 Sekunden" data-cursor="play">
+          <img data-yt-thumb="EWlNcw25agc" src="https://i.ytimg.com/vi/EWlNcw25agc/maxresdefault.jpg" alt="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin">
+        </button>
+        <div class="film-meta"><h3>Bridal Shooting</h3><p>18 Sek.</p></div>
+      </article>
+      <article class="film" data-yt="FxJAN8GB7N4">
+        <button type="button" class="film-cover" aria-label="Bridal Shooting abspielen, 24 Sekunden" data-cursor="play">
+          <img data-yt-thumb="FxJAN8GB7N4" src="https://i.ytimg.com/vi/FxJAN8GB7N4/maxresdefault.jpg" alt="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin">
+        </button>
+        <div class="film-meta"><h3>Bridal Shooting</h3><p>24 Sek.</p></div>
+      </article>
+      <a class="film film-cta" href="#anfrage" data-track="cta_filme">
+        <span class="script">Euer Film?</span>
+        <span class="film-cta-t">Prüfen, ob euer Termin noch frei ist <span aria-hidden="true">→</span></span>
+      </a>
     </div>
   </div>
-  <p class="fine">Die Filme liegen auf YouTube. Die Vorschaubilder werden von dort geladen; der Film selbst startet erst mit eurem Klick. <a href="/datenschutz#youtube">Mehr dazu</a></p>
+  <p class="fine filme-fine">Die Filme liegen auf YouTube. Die Vorschaubilder werden von dort geladen; der Film selbst startet erst mit eurem Klick. <a href="datenschutz#youtube">Mehr dazu</a></p>
 </section>
 
 <!-- ================= KEIN KITSCH ================= -->
-<section class="real">
-  <div class="real-grid">
-    <div class="real-copy">
-      <span class="eyebrow eyebrow-rose">Wir passen uns an euch an</span>
-      <h2>Ihr müsst nicht schauspielern. <i>Ihr müsst einfach nur verheiratet werden.</i></h2>
-      <p>Die besten Momente entstehen, wenn ihr komplett vergesst, dass überhaupt eine Kamera in der Nähe ist. Wir bewegen uns im Hintergrund. Unauffällig, ruhig, wie Gäste mit einer Kamera.</p>
-      <p>Ihr sollt euren Tag genießen, mit euren Freunden feiern und eure Zeit nicht mit Regieanweisungen verschwenden — außer ihr möchtet das natürlich. Wir passen uns an euch an, nicht ihr an uns.</p>
-    </div>
-    <figure class="real-fig">
-      <div class="film real-film" data-yt="FxJAN8GB7N4">
-        <h3 class="sr-only">Bridal Shooting</h3>
-        <button type="button" class="film-cover" aria-label="Bridal Shooting abspielen">
-          <img data-yt-thumb="FxJAN8GB7N4" src="https://i.ytimg.com/vi/FxJAN8GB7N4/maxresdefault.jpg" alt="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin">
-          <span class="playbtn playbtn-sm"><span class="playbtn-ring"></span></span>
-        </button>
-      </div>
-      <figcaption class="film-caption">Bridal Shooting · 24 Sek.</figcaption>
-    </figure>
+<section class="echt" aria-labelledby="echt-h2">
+  <div class="echt-collage" aria-hidden="true">
+    <img class="c1" src="assets/v3/still-a16-kiss-cheek.webp" alt="" width="1400" height="788" loading="lazy" data-parallax="-90">
+    <img class="c2" src="assets/v3/still-a35-laugh.webp" alt="" width="1100" height="619" loading="lazy" data-parallax="-180">
+    <img class="c3" src="assets/v3/still-b21-hands.webp" alt="" width="1100" height="619" loading="lazy" data-parallax="-40">
+    <img class="c4" src="assets/v3/still-a06-mother-hug.webp" alt="" width="1100" height="619" loading="lazy" data-parallax="-140">
+  </div>
+  <div class="echt-copy">
+    <span class="eyebrow">Wir passen uns an euch an</span>
+    <h2 id="echt-h2" data-reveal>Ihr müsst nicht schauspielern. <i>Ihr müsst einfach nur verheiratet werden.</i></h2>
+    <p data-fade>Die besten Momente entstehen, wenn ihr komplett vergesst, dass überhaupt eine Kamera in der Nähe ist. Wir bewegen uns im Hintergrund. Unauffällig, ruhig, wie Gäste mit einer Kamera.</p>
+    <p data-fade>Ihr sollt euren Tag genießen, mit euren Freunden feiern und eure Zeit nicht mit Regieanweisungen verschwenden – außer ihr möchtet das natürlich. Wir passen uns an euch an, nicht ihr an uns.</p>
   </div>
 </section>
 
 <!-- ================= WERT ÜBER DIE JAHRE ================= -->
-<section class="years">
-  <div class="years-head">
-    <span class="eyebrow">Der Wert über die Jahre</span>
-    <h2>Bilder gewinnen mit jedem Jahr an Wert. <i>Stimmen erst recht.</i></h2>
+<section class="jahre" id="jahre" aria-labelledby="jahre-h2" data-year="0">
+  <div class="jahre-bg" aria-hidden="true">
+    <img src="assets/v3/still-b20-group.webp" alt="" width="1600" height="900" loading="lazy">
+    <span class="jahre-vignette"></span>
   </div>
-  <ol class="years-list">
-    <li>
-      <span class="years-num">5<small>Jahre</small></span>
+  <div class="jahre-head">
+    <span class="eyebrow">Der Wert über die Jahre</span>
+    <h2 id="jahre-h2" data-reveal>Bilder gewinnen mit jedem Jahr an Wert. <i>Stimmen erst recht.</i></h2>
+  </div>
+  <ol class="jahre-list">
+    <li data-y="1">
+      <span class="jahre-num">5<small>Jahre</small></span>
       <p>In fünf Jahren schaut ihr euren Film an einem verregneten Sonntag auf dem Sofa an und seid sofort wieder zurück an diesem Tag.</p>
     </li>
-    <li>
-      <span class="years-num">10<small>Jahre</small></span>
+    <li data-y="2">
+      <span class="jahre-num">10<small>Jahre</small></span>
       <p>In zehn Jahren zeigt ihr ihn vielleicht euren Kindern, die sehen wollen, wie Mama und Papa damals gefeiert haben.</p>
     </li>
-    <li>
-      <span class="years-num">20<small>Jahre</small></span>
-      <p>Und in zwanzig Jahren werdet ihr dankbar für jede Sekunde sein, auf der ihr die Stimmen und das Lachen der Menschen hört, die diesen Tag mit euch gefeiert haben. Auch von euren Liebsten, die vielleicht nicht mehr da sein können.</p>
+    <li data-y="3">
+      <span class="jahre-num">20<small>Jahre</small></span>
+      <p>Und in zwanzig Jahren werdet ihr dankbar für jede Sekunde sein, auf der ihr die Stimmen und das Lachen der Menschen hört, die diesen Tag mit euch gefeiert haben. <i>Auch von euren Liebsten, die vielleicht nicht mehr da sein können.</i></p>
     </li>
   </ol>
 </section>
 
 <!-- ================= NATA & NILS ================= -->
-<section class="wir" id="wir">
+<section class="wir" id="wir" aria-labelledby="wir-h2">
   <div class="wir-inner">
+    <figure class="wir-foto">
+      <div class="wir-mask"><img src="assets/v3/portrait-nata-nils.webp" alt="Nata und Nils von Weddings by Frames" width="900" height="1125" loading="lazy" data-parallax="-50"></div>
+      <figcaption class="script">Nata <span class="amp">&amp;</span> Nils</figcaption>
+    </figure>
     <div class="wir-copy">
       <p class="script wir-hi">Hi,</p>
-      <h2>wir sind Nata <span class="amp">&amp;</span> Nils.</h2>
-      <p>Nils filmt. Nata fotografiert, wenn ihr das wollt und noch niemanden dafür habt. Wir kommen aus Lohne bei Vechta und machen 24 Hochzeiten im Jahr. Mehr nicht. Weil wir für jeden Film die Zeit haben wollen, die ihr auch in euren Tag gesteckt habt.</p>
-      <p>Am Hochzeitstag werdet ihr uns kaum bemerken. Ihr lacht, tanzt, umarmt eure Leute, und wir sammeln die Momente ein, die ihr später nie wieder hergeben wollt.</p>
-      <p>Und am Ende ist das nicht unser Film. Das ist eure Geschichte. Wir passen nur drauf auf.</p>
-      <p class="script wir-sign">Nata <span class="amp">&amp;</span> Nils</p>
+      <h2 id="wir-h2" data-reveal>wir sind Nata <span class="amp">&amp;</span> Nils.</h2>
+      <p data-fade>Nils filmt. Nata fotografiert, wenn ihr das wollt und noch niemanden dafür habt. Wir kommen aus Lohne bei Vechta und machen 24 Hochzeiten im Jahr. Mehr nicht. Weil wir für jeden Film die Zeit haben wollen, die ihr auch in euren Tag gesteckt habt.</p>
+      <p data-fade>Am Hochzeitstag werdet ihr uns kaum bemerken. Ihr lacht, tanzt, umarmt eure Leute, und wir sammeln die Momente ein, die ihr später nie wieder hergeben wollt.</p>
+      <p data-fade>Und am Ende ist das nicht unser Film. Das ist eure Geschichte. Wir passen nur drauf auf.</p>
+      <div class="wir-24" data-fade>
+        <span class="wir-24-n" data-count="24" data-decimals="0">24</span>
+        <span class="wir-24-t">Hochzeiten im Jahr.<br><i>Mehr nicht.</i></span>
+      </div>
     </div>
-    <figure class="wir-foto">
-      <img src="/assets/portrait-nata-nils.jpg" alt="Nata und Nils von Weddings by Frames" loading="lazy">
-    </figure>
   </div>
 </section>
 
 <!-- ================= ABLAUF ================= -->
-<section class="steps">
-  <div class="steps-head">
+<section class="ablauf" aria-labelledby="ablauf-h2">
+  <div class="ablauf-head">
     <span class="eyebrow">Ablauf</span>
-    <h2>So einfach läuft es ab.</h2>
+    <h2 id="ablauf-h2" data-reveal>So einfach läuft es ab.</h2>
   </div>
-  <ol class="steps-list">
-    <li><span class="steps-n">1</span><h3>Verfügbarkeit prüfen</h3><p>Schickt uns kurz eure Eckdaten. Wir antworten innerhalb von 24 Stunden.</p></li>
-    <li><span class="steps-n">2</span><h3>Kennenlernen</h3><p>Wir quatschen ganz entspannt per Videocall oder bei einem Kaffee.</p></li>
-    <li><span class="steps-n">3</span><h3>Euren Tag genießen</h3><p>Am Hochzeitstag begleiten wir euch unsichtbar.</p></li>
-    <li><span class="steps-n">4</span><h3>Gänsehaut erleben</h3><p>Ihr erhaltet euren fertigen Film und durchlebt eure Hochzeit noch einmal.</p></li>
+  <ol class="ablauf-list">
+    <li><span class="ablauf-n">01</span><h3>Verfügbarkeit prüfen</h3><p>Schickt uns kurz eure Eckdaten. Wir antworten innerhalb von 24 Stunden.</p></li>
+    <li><span class="ablauf-n">02</span><h3>Kennenlernen</h3><p>Wir quatschen ganz entspannt per Videocall oder bei einem Kaffee.</p></li>
+    <li><span class="ablauf-n">03</span><h3>Euren Tag genießen</h3><p>Am Hochzeitstag begleiten wir euch unsichtbar.</p></li>
+    <li><span class="ablauf-n">04</span><h3>Gänsehaut erleben</h3><p>Ihr erhaltet euren fertigen Film und durchlebt eure Hochzeit noch einmal.</p></li>
   </ol>
+  <span class="ablauf-line" aria-hidden="true"><span></span></span>
 </section>
 
 <!-- ================= ANFRAGE ================= -->
-<section class="final" id="anfrage">
+<section class="final" id="anfrage" aria-labelledby="final-h2">
+  <div class="final-bg" aria-hidden="true"><img src="assets/v3/still-a26-kiss-wall.webp" alt="" width="1400" height="788" loading="lazy" data-parallax="-80"></div>
   <div class="form-card">
-    <img class="final-mark" src="/assets/logo.svg" alt="" width="34" height="37">
+    <img class="final-mark" src="assets/logo.svg" alt="" width="34" height="37">
     <div id="form-intro">
-      <h2>Sollen wir prüfen, ob euer Termin <i>noch frei ist?</i></h2>
+      <h2 id="final-h2">Sollen wir prüfen, ob euer Termin <i>noch frei ist?</i></h2>
       <p class="final-sub">Tragt einfach eure Daten ein. Wir melden uns umgehend bei euch mit allen Infos und schauen, ob wir euren Tag begleiten können.</p>
     </div>
 
     <form id="lead-form" novalidate>
       <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
       <input type="hidden" name="utm" id="f-utm">
-      <input type="hidden" name="seite" value="Landingpage v2">
+      <input type="hidden" name="seite" value="Landingpage v3">
 
       <div class="form-grid">
         <label class="field">
@@ -263,17 +365,17 @@
         </label>
       </div>
 
-      <p class="form-error" data-error="fields" hidden>Bitte gebt eure Namen, ein Datum (oder setzt den Haken), die Location, eine Telefonnummer und eine gültige E-Mail an.</p>
-      <p class="form-error" data-error="send" hidden>Das hat leider nicht geklappt. Schreibt uns direkt an <a href="mailto:info@frames-studio.de">info@frames-studio.de</a> oder ruft an: <a href="tel:+4915157312699">+49 151 5731 2699</a>.</p>
+      <p class="form-error" data-error="fields" role="alert" hidden>Bitte gebt eure Namen, ein Datum (oder setzt den Haken), die Location, eine Telefonnummer und eine gültige E-Mail an.</p>
+      <p class="form-error" data-error="send" role="alert" hidden>Das hat leider nicht geklappt. Schreibt uns direkt an <a href="mailto:info@frames-studio.de">info@frames-studio.de</a> oder ruft an: <a href="tel:+4915157312699">+49 151 5731 2699</a>.</p>
       <button type="submit" class="button button-red button-block" data-track="form_submit">Termin-Verfügbarkeit unverbindlich prüfen</button>
-      <p class="fine">Unverbindlich. Kein Newsletter. <a href="/datenschutz">Datenschutz</a></p>
+      <p class="fine">Unverbindlich. Kein Newsletter. Antwort innerhalb von 24 Stunden. <a href="datenschutz">Datenschutz</a></p>
     </form>
 
     <div class="form-success" id="form-success" hidden tabindex="-1">
       <p class="script success-script">Danke.</p>
       <h3>Wir schauen jetzt, ob euer Termin noch frei ist.</h3>
       <p>Einer von uns meldet sich innerhalb von 24 Stunden persönlich bei euch.<br>Bis dahin: Schaut euch in Ruhe den Film von Pauline &amp; Niklas an.</p>
-      <a href="#film" class="button button-ghost">Zum Film</a>
+      <a href="#filme" class="button button-ghost-light">Zu den Filmen</a>
     </div>
     <p class="final-contact">Oder direkt: <a href="tel:+4915157312699">+49 151 5731 2699</a> · <a href="mailto:info@frames-studio.de">info@frames-studio.de</a></p>
   </div>
@@ -282,15 +384,26 @@
 </main>
 
 <footer class="foot">
-  <a href="#top" class="wordmark"><img src="/assets/logo.svg" alt="" width="22" height="24"><span><i>Weddings</i> by Frames</span></a>
+  <a href="#top" class="wordmark"><img src="assets/logo.svg" alt="" width="22" height="24"><span><i>Weddings</i> by Frames</span></a>
   <p>Lohne bei Vechta · Hochzeitsfilme mit euren Stimmen</p>
-  <nav><a href="/impressum">Impressum</a><a href="/datenschutz">Datenschutz</a><a href="#" data-cc-open>Cookie-Einstellungen</a></nav>
+  <nav aria-label="Rechtliches"><a href="impressum">Impressum</a><a href="datenschutz">Datenschutz</a><a href="#" data-cc-open>Cookie-Einstellungen</a></nav>
 </footer>
 
 <a href="#anfrage" class="sticky" id="sticky" data-track="cta_sticky">Termin prüfen</a>
 
-<script src="/consent.js" defer></script>
-<script src="/v2.js" defer></script>
-<script src="/petals.js" defer></script>
+<dialog class="trailer" id="trailer" aria-label="Trailer von Alwina und Ivan mit Ton">
+  <button type="button" class="trailer-close" data-trailer-close aria-label="Trailer schließen"><span></span><span></span></button>
+  <video controls playsinline preload="none" poster="assets/trailer-poster.jpg">
+    <source src="assets/trailer-alwina-ivan.mp4" type="video/mp4">
+  </video>
+  <p class="trailer-cta">Gänsehaut? <a href="#anfrage" data-trailer-close data-track="cta_trailer">Prüft, ob euer Termin noch frei ist →</a></p>
+</dialog>
+
+<script src="consent.js" defer></script>
+<script src="site.js" defer></script>
+<script src="vendor/gsap.min.js" defer></script>
+<script src="vendor/ScrollTrigger.min.js" defer></script>
+<script src="vendor/lenis.min.js" defer></script>
+<script src="motion.js" defer></script>
 </body>
 </html>
