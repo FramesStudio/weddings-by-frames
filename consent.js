@@ -61,7 +61,7 @@
   window.wbfQueue = [];
   window.wbfTrack = function (event, data) {
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push(Object.assign({ event: event, page: 'v2' }, data || {}));
+    window.dataLayer.push(Object.assign({ event: event, page: 'v3' }, data || {}));
     if (window.fbq) senden(event, data);
     else window.wbfQueue.push([event, data]);
   };
